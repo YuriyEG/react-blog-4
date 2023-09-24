@@ -7,7 +7,7 @@ import SendButton from '../SendButton';
 
 import styles from './createArticle.module.css';
 
-const CreateArticleModal = () => {
+const CreateArticle = () => {
   return (
     <div className={styles.createArticle}>
       <form className={styles.createArticle__form}>
@@ -56,4 +56,4 @@ const CreateArticleModal = () => {
   );
 };
 
-export default CreateArticleModal;
+export default CreateArticle;

@@ -27,7 +27,7 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
 
     width: 938px;
     min-height: 701px;
-    margin-top: 26px;
+    margin-top: 60px;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
@@ -99,15 +99,12 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
     
     box-sizing: border-box;
     padding: 10px;
+    border-radius: 6px;
 
 
 
 }
 
-
-.createArticle__submit {
-
-}
 
 .createArticle__label {
     width: 874px;
@@ -145,6 +142,9 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
     margin-right: 16px;
     border: 1px solid rgba(217, 217, 217, 1);
     border-radius: 4px;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.75);
+    text-indent: 10px;
 
 
 }

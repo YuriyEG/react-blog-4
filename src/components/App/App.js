@@ -18,6 +18,7 @@ const App = () => {
   return (
     <div className={styles.app}>
       <Header />
+      <EditArticle />
       <CreateArticle />
       <SignUp />
       <EditProfile />
@@ -25,7 +26,7 @@ const App = () => {
 
       <Article />
       <DeleteArticle />
-      <EditArticle />
+
       <List />
       <ListAuthorised />
       <ArticleAuthorised />
