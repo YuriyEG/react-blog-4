@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Medium";
+    src: url('Inter-Regular.ttf');
+}
+
+.header {
+    width: 1440px;
+    height: 80px;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.header__title {
+    width: 147px;
+    height: 28px;
+    font-family: "Regular", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 28px;
+    align-self: center;
+    margin-left: 28px;
+    
+}

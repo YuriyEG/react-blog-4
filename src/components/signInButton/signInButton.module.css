@@ -1,0 +1,25 @@
+@font-face {
+    font-family: "Regular";
+    src: url('./Inter-Regular.ttf');
+}
+
+.signInButton {
+    width: 109px;
+    height: 51px;
+    color: black;
+    border-radius: 5px;
+    align-self: center;
+    margin-right: 28px;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: "Regular", Arial, Helvetica, sans-serif;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 9px;
+    text-align: center;
+    font-weight: lighter;
+    margin-left: auto;
+
+    
+    
+}
