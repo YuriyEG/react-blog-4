@@ -12,10 +12,10 @@ const SignIn = () => {
           <span className={styles.signIn__email}>Email address</span>
           <br />
           <input
-            type="text"
+            type="email"
             className={styles.signIn__input}
             placeholder="Email address"
-            name="name"
+            name="email"
             required="required"
           />
           <br />
@@ -25,10 +25,10 @@ const SignIn = () => {
           <span className={styles.signIn__email}>Password</span>
           <br />
           <input
-            type="email"
+            type="password"
             className={styles.signIn__input}
             placeholder="Password"
-            name="email"
+            name="password"
             required="required"
           />
           <br />

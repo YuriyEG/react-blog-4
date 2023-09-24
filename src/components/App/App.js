@@ -9,6 +9,8 @@ import List from '../List/List';
 import ListAuthorised from '../ListAuthorised';
 import ArticleAuthorised from '../ArticleAuthorised';
 import SignIn from '../SignIn';
+import EditProfile from '../EditProfile';
+import SignUp from '../SignUp';
 
 import styles from './App.module.css';
 
@@ -16,7 +18,10 @@ const App = () => {
   return (
     <div className={styles.app}>
       <Header />
+      <SignUp />
+      <EditProfile />
       <SignIn />
+
       <Article />
       <DeleteArticle />
       <CreateArticle />
