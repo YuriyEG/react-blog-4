@@ -1,3 +1,6 @@
+/* eslint-disable */
+
+
 import React, { useState } from 'react';
 
 import Check from '../Check';
@@ -9,6 +12,7 @@ const SignUp = () => {
   const [passwordUnMatch, setPasswordUnMatch] = useState(false);
   const [wrongUserName, setWrongUserName] = useState(false);
   const [wrongEmail, setWrongEmail] = useState(false);
+
   return (
     <div className={styles.signUp}>
       <form className={styles.signUp__form} name="feedback">

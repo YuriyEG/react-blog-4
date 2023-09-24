@@ -55,22 +55,13 @@
     
 }
 
-.signIn__password {
+.signIn__description {
     width: 320px;
     height: 22px;
     font-size: 14px;
     box-sizing: border-box;
 }
 
-.signIn__email {
-
-    width: 320px;
-    height: 22px;
-    font-size: 14px;
-    box-sizing: border-box;
-
-
-}
 
 .signIn__submit {
     width: 320px;

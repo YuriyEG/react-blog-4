@@ -18,13 +18,13 @@ const App = () => {
   return (
     <div className={styles.app}>
       <Header />
+      <CreateArticle />
       <SignUp />
       <EditProfile />
       <SignIn />
 
       <Article />
       <DeleteArticle />
-      <CreateArticle />
       <EditArticle />
       <List />
       <ListAuthorised />

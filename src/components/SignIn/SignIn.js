@@ -5,11 +5,11 @@ import styles from './signIn.module.css';
 const SignIn = () => {
   return (
     <div className={styles.signIn}>
-      <form className={styles.signIn__form} name="feedback" method="POST" action="/feedback.php">
+      <form className={styles.signIn__form}>
         <div className={styles.signIn__title}>Sign In</div>
 
         <div className={styles.signIn__label}>
-          <span className={styles.signIn__email}>Email address</span>
+          <span className={styles.signIn__desctiption}>Email address</span>
           <br />
           <input
             type="email"
@@ -22,7 +22,7 @@ const SignIn = () => {
         </div>
 
         <div className={styles.signIn__label}>
-          <span className={styles.signIn__email}>Password</span>
+          <span className={styles.signIn__desctiption}>Password</span>
           <br />
           <input
             type="password"
