@@ -1,17 +1,25 @@
 import React from 'react';
-
-import SignUpButton from '../SignUpButton';
-import SignInButton from '../signInButton';
+import { Link } from 'react-router-dom';
 
 import styles from './header.module.css';
 
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.header__title}>Realworld Blog</div>
+      <Link className={styles.header__title} style={{ color: 'rgba(0, 0, 0, 0.85)', textDecoration: 'none' }} to="/">
+        Realworld Blog
+      </Link>
+      <div className={styles.signInButton}>
+        <Link style={{ textDecoration: 'none' }} to="/signin">
+          Sign In
+        </Link>
+      </div>
 
-      <SignInButton />
-      <SignUpButton />
+      <div className={styles.signUpButton}>
+        <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/signup">
+          Sign Up
+        </Link>
+      </div>
     </div>
   );
 };
