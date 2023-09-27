@@ -21,9 +21,8 @@ const ArticleItem = ({ article }) => {
     author = article.author.username;
   }
 
-  if (article.author !== undefined) {
-    imageUrl = (article.author.image);
-    console.log(article.author.image);
+  if (article.author) {
+    imageUrl = article.author.image;
   }
   
   
@@ -57,7 +56,7 @@ const ArticleItem = ({ article }) => {
             <div className={styles.articleItem__name}>{author}</div>
             <div className={styles.articleItem__date}>{date}</div>
           </div>
-          <div className={styles.articleItem__cardIcon} >{imageUrl ? <img src={imageUrl} alt='img'/> : null }</div>
+          <div className={styles.articleItem__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
       </div>
     </div>
