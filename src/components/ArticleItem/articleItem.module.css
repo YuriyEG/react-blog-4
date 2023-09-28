@@ -37,6 +37,11 @@
 
 }
 
+.articleItem__titleBox {
+    width: 300px;
+    overflow: hidden;
+}
+
 .articleItem__like {
     height: 16px;
     width: 16px;
@@ -92,6 +97,7 @@
     line-height: 22px;
     font-size: 12px;
     color: rgba(0, 0, 0, 0.75);
+    overflow: hidden;
 }
 .articleItem__right {
     width: 24%;

@@ -36,7 +36,7 @@ const ArticleItem = ({ article }) => {
     <div className={styles.articleItem}>
       <div className={styles.articleItem__left}>
         <div className={styles.articleItem__title}>
-          <span>{article.title}</span>
+          <span className={styles.articleItem__titleBox}>{article.title}</span>
 
           <div className={styles.articleItem__like}></div>
           <div className={styles.articleItem__count}>4</div>
