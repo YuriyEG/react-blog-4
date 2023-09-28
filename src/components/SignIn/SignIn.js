@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import styles from './signIn.module.css';
 
@@ -37,9 +38,9 @@ const SignIn = () => {
         <input type="submit" className={styles.signIn__submit} name="submit_btn" value="Login" />
         <div className={styles.signIn__question}>
           Don&#8217;t have an account?{' '}
-          <a href="#" className={styles.signIn__questionBlue}>
+          <Link to="/sign-up" className={styles.signIn__questionBlue}>
             Sign Up
-          </a>
+          </Link>
         </div>
       </form>
     </div>

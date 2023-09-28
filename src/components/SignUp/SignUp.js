@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import Check from '../Check';
 
@@ -156,9 +157,9 @@ const SignUp = () => {
         <input type="submit" className={styles.signUp__submit} disabled={!isValid} />
         <div className={styles.signUp__question}>
           Already have an account?{' '}
-          <a href="#" className={styles.signUp__questionBlue}>
+          <Link to="/sign-in" className={styles.signUp__questionBlue}>
             Sign In
-          </a>
+          </Link>
         </div>
       </form>
     </div>

@@ -6,13 +6,14 @@
     min-height: 140px;
     margin-left: auto;
     margin-right: auto;
+    padding-bottom: 28px;
 
 
 }
 
 .list__pagination {
-    border: 1px solid black;
-    width: 250px;
-    margin-left: auto;
-    margin-right: auto;
+
+    width: 100%;
+
+    
 }
