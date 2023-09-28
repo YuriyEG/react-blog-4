@@ -12,7 +12,7 @@ const SignUp = () => {
   const  {
     register,
     formState: {
-      errors
+      errors,
     },
     handleSubmit,
 
@@ -24,22 +24,20 @@ const SignUp = () => {
 
 
   const onSubmit = (data) => {
-      alert(JSON.stringify(data))
+      console.log(JSON.stringify(data))
   }
   return (
     <div className={styles.signUp}>
-      <form className={styles.signUp__form} onSubmit={handleSubmit(onSubmit)} name="feedback">
+      <form className={styles.signUp__form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.signUp__title}>Create new account</div>
 
         <div className={styles.signUp__label}>
           <span className={styles.signUp__description}>Username</span>
           <br />
           <input
-            type="text"
-            className={styles.signUp__input}
-            placeholder="Username"
-            name="username"
-            required="required"
+          className={styles.signUp__input}
+          {...register('username')}
+
           />
           <br />
           {wrongUserName ? (
@@ -112,7 +110,7 @@ const SignUp = () => {
           ) : null}
         </div>
         <Check descript={'I agree to the processing of my personal information'} />
-        <input type="submit" className={styles.signUp__submit} name="submit_btn" value="Create" />
+        <input type="submit" className={styles.signUp__submit}value="Create" />
         <div className={styles.signUp__question}>
           Already have an account?{' '}
           <a href="#" className={styles.signUp__questionBlue}>
