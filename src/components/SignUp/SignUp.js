@@ -15,6 +15,7 @@ const SignUp = () => {
     formState: { errors, isValid },
     handleSubmit,
     reset,
+    getFieldState,
   } = useForm({
     mode: "onBlur",
     defaultValues: {
@@ -29,9 +30,12 @@ const SignUp = () => {
   const [wrongUserName, setWrongUserName] = useState(false);
   const [wrongEmail, setWrongEmail] = useState(false);
 
+  console.log('fieldState', getFieldState('password2'))
+
   const onSubmit = (data) => {
+    
     console.log(JSON.stringify(data));
-    service.createUser(JSON.stringify(data), (res) => console.log(res), (err) => console.log(err));
+    service.createUser(data, (res) => console.log(res), (err) => console.log(err));
     reset();
   };
   return (

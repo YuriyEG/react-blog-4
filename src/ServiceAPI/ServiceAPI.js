@@ -8,20 +8,13 @@ class ServiceApi {
     }
 
      createUser (obj, onResponse = this.defaultResponce, onError = this.defaultError ) {
-        let obj = {
-          user: {
-            username: username,
-            email: email,
-            password: password
-          }
-        }
   
         fetch(this.baseUrl + this.forUsers,{
     method: "POST",
     headers: {
       'Content-Type': 'application/json;charset=utf-8'
     },
-    body: JSON.stringify(obj)
+    body: JSON.stringify({ user: obj })
   }
   )
     .then( res => res.json())
