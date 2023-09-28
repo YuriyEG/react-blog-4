@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import Check from '../Check';
 
 import styles from './signUp.module.css';
+import ServiseAPI from '../../ServiceAPI/ServiceAPI';
+const service = new ServiseAPI();
 
 const SignUp = () => {
   const {
@@ -29,6 +31,7 @@ const SignUp = () => {
 
   const onSubmit = (data) => {
     console.log(JSON.stringify(data));
+    service.createUser(JSON.stringify(data), (res) => console.log(res), (err) => console.log(err));
     reset();
   };
   return (

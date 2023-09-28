@@ -7,7 +7,7 @@ class ServiceApi {
       this.forArticles = 'articles/';
     }
 
-     createUser (username, email, password, onResponse = this.defaultResponce, onError = this.defaultError ) {
+     createUser (obj, onResponse = this.defaultResponce, onError = this.defaultError ) {
         let obj = {
           user: {
             username: username,
