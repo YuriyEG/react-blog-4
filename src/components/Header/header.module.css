@@ -80,4 +80,8 @@
     text-align: center;
     padding-top: 4px;
     margin-left: auto;
+    font-family: "Regular", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    align-self: center;
 }
