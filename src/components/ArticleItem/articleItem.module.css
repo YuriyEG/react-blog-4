@@ -99,6 +99,9 @@
     font-size: 12px;
     color: rgba(0, 0, 0, 0.75);
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 .articleItem__right {
     width: 24%;
