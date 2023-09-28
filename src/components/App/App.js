@@ -1,8 +1,10 @@
 /* eslint-disable */
 
 import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
+import { Navigate } from "react-router-dom";
 
 import Header from '../Header';
 import CreateArticle from '../CreateArticle';
@@ -14,7 +16,13 @@ import SignUp from '../SignUp';
 
 import styles from './App.module.css';
 
+
+
 const App = () => {
+
+ const [authentificated, setAuthentificated ] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false)); 
+  
+
   return (
     <Router>
       <div className={styles.app}>
