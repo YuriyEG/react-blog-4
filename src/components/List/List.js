@@ -35,7 +35,7 @@ const List = () => {
       <div className={styles.list__pagination}>
         <Pagination defaultCurrent={0}
           pageSize={1}
-          total={20}
+          total={totalPages}
           showSizeChanger={false}
           onChange={(page) => setCurrentPage(page)}
           style={{ display: 'inline-block'}}
