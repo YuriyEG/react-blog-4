@@ -157,7 +157,7 @@ const SignUp = () => {
         <div className={styles.signUp__question}>
           Already have an account?{' '}
           <a href="#" className={styles.signUp__questionBlue}>
-            Sign Up
+            Sign In
           </a>
         </div>
       </form>

@@ -10,13 +10,13 @@ const Header = () => {
         Realworld Blog
       </Link>
       <div className={styles.signInButton}>
-        <Link style={{ textDecoration: 'none' }} to="/signin">
+        <Link style={{ textDecoration: 'none' }} to="/sign-in">
           Sign In
         </Link>
       </div>
 
       <div className={styles.signUpButton}>
-        <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/signup">
+        <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-up">
           Sign Up
         </Link>
       </div>
