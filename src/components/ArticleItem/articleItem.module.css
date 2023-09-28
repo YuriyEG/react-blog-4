@@ -38,7 +38,7 @@
 }
 
 .articleItem__titleBox {
-    width: 300px;
+    max-width: 550px;
     overflow: hidden;
 }
 
@@ -68,6 +68,7 @@
     margin-top: 8px;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
     
 
 
