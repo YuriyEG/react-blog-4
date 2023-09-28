@@ -20,9 +20,9 @@ const App = () => {
       <div className={styles.app}>
         <Header />
         <Route path="/"  render={ () => <h1>Welcome!</h1>} exact />
-        <Route path="/" exact component={List} />
-        <Route path="/signup" component={SignUp} />
-        <Route path="/signin" component={SignIn} />
+        <Route path="/" exact component={List} exact/>
+        <Route path="/signup" component={SignUp} exact/>
+        <Route path="/signin" component={SignIn} exact/>
         {/* <List articles={[1, 3, 5, 6, 6, 3]} />
         <EditArticle />
         <CreateArticle />

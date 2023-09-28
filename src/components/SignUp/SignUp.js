@@ -2,20 +2,33 @@
 
 
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import Check from '../Check';
 
 import styles from './signUp.module.css';
 
 const SignUp = () => {
+  const  {
+    register,
+    formState: {
+      errors
+    },
+    handleSubmit,
+
+  } = useForm();
   const [passwordWarning, setPasswordWarning] = useState(false);
   const [passwordUnMatch, setPasswordUnMatch] = useState(false);
   const [wrongUserName, setWrongUserName] = useState(false);
   const [wrongEmail, setWrongEmail] = useState(false);
 
+
+  const onSubmit = (data) => {
+      alert(JSON.stringify(data))
+  }
   return (
     <div className={styles.signUp}>
-      <form className={styles.signUp__form} name="feedback">
+      <form className={styles.signUp__form} onSubmit={handleSubmit(onSubmit)} name="feedback">
         <div className={styles.signUp__title}>Create new account</div>
 
         <div className={styles.signUp__label}>
