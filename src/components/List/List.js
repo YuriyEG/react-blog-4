@@ -38,7 +38,7 @@ const List = () => {
           total={20}
           showSizeChanger={false}
           onChange={(page) => setCurrentPage(page)}
-          style={{ display: 'inline-block', marginLeft: 'auto', marginRight: 'auto'}}
+          style={{ display: 'inline-block'}}
         />
       </div>
     </div>
