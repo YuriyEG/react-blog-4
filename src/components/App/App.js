@@ -27,16 +27,14 @@ const App = () => {
     <Router>
       <div className={styles.app}>
         <Header />
-        <Route path="/"  render={ () => <h1>Welcome!</h1>} exact />
         <Route path="/"  component={List} exact/>
-        <Route path="/signup" component={SignUp} exact/>
-        <Route path="/signin" component={SignIn} exact/>
-        {/* <List articles={[1, 3, 5, 6, 6, 3]} />
-        <EditArticle />
-        <CreateArticle />
-        <SignUp />
-        <EditProfile />
-        <SignIn /> */}
+        <Route path="/articles" component={List} exact/>
+        <Route path="/sign-up" component={SignUp} exact/>
+        <Route path="/sign-in" component={SignIn} exact/>
+        <Route path="/profile" component={EditProfile} exact/>
+        <Route path="/new-article" component={CreateArticle} exact />
+        <Route path="/articles/{slug}/edit" component={EditArticle} />
+      
       </div>
     </Router>
   );
