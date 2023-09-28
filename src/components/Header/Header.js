@@ -6,11 +6,11 @@ import styles from './header.module.css';
 const Header = () => {
   return (
     <div className={styles.header}>
-      <Link className={styles.createArticleButton} to="/new-article">
-        Create article
-      </Link>
       <Link className={styles.header__title} style={{ color: 'rgba(0, 0, 0, 0.85)', textDecoration: 'none' }} to="/">
         Realworld Blog
+      </Link>
+      <Link className={styles.createArticleButton} to="/new-article">
+        Create article
       </Link>
       <div className={styles.signInButton}>
         <Link style={{ textDecoration: 'none' }} to="/sign-in">

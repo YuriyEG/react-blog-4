@@ -78,5 +78,6 @@
     color: rgba(82, 196, 26, 1);
     border: 1px solid rgba(82, 196, 26, 1);
     text-align: center;
-    vertical-align: middle;
+    padding-top: 4px;
+    margin-left: auto;
 }
