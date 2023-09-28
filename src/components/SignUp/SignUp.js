@@ -36,17 +36,17 @@ const SignUp = () => {
           <br />
           <input
           className={styles.signUp__input}
-          {...register('username')}
+          {...register('username', { required: true, minLength: 3, maxLength: 20 })}
 
           />
           <br />
-          {wrongUserName ? (
-            <div>
-              {' '}
-              <span className={styles.signUp__warning}>Wrong username.</span>
-              <br />
-            </div>
-          ) : null}
+    
+       
+       
+              <span className={styles.signUp__warning}>{errors?.username && <p>Wrong username.</p>}</span>
+        
+       
+  
         </div>
 
         <div className={styles.signUp__label}>
