@@ -1,13 +1,14 @@
-/* eslint-disable */
+/* eslint-disable */ 
 
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import Check from '../Check';
+import ServiseAPI from '../../ServiceAPI/ServiceAPI';
 
 import styles from './signUp.module.css';
-import ServiseAPI from '../../ServiceAPI/ServiceAPI';
+
 const service = new ServiseAPI();
 
 const SignUp = () => {
@@ -16,44 +17,33 @@ const SignUp = () => {
     formState: { errors, isValid },
     handleSubmit,
     reset,
-    getFieldState,
   } = useForm({
-    mode: "onBlur",
+    mode: 'onBlur',
     defaultValues: {
       email: '',
       username: '',
       password: '',
       password2: '',
-    }
+    },
   });
-  const [passwordWarning, setPasswordWarning] = useState(false);
-  const [passwordUnMatch, setPasswordUnMatch] = useState(false);
-  const [wrongUserName, setWrongUserName] = useState(false);
-  const [wrongEmail, setWrongEmail] = useState(false);
+
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
 
   const loadPassword = (e) => {
     setPassword(e.target.value);
-    console.log(e.target.value);
-  }
-
-  const onSubmit = (data) => {
-    
-    if (password === password2) {
-          service.createUser(data, (res) => console.log(res), (err) => console.log(err));
-    reset();
-    }
-    console.log(JSON.stringify(data));
-
   };
 
-  useEffect( () => {
-    if (password !== password2 ) {
-      console.log('Пароли не совпадают!')
+  const onSubmit = (data) => {
+    if (password === password2) {
+      service.createUser(
+        data,
+        (res) => console.log(res),
+        (err) => console.log(err)
+      );
+      reset();
     }
-  }, [password, password2 ]);
-  
+  };
 
   return (
     <div className={styles.signUp}>
@@ -86,8 +76,9 @@ const SignUp = () => {
             {...register('email', {
               required: 'Поле обязательно к заполнению',
               pattern: {
-                value: /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/,
-                message: 'Please enter valid email!'
+                value:
+                  /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/,
+                message: 'Please enter valid email!',
               },
               minLength: { value: 4, message: 'Минимум 4 символа' },
               maxLength: {
@@ -97,16 +88,14 @@ const SignUp = () => {
             })}
           />
           <br />
-   
-              <span className={styles.signUp__warning}>{errors?.email && <p>{errors?.email?.message}</p>}</span>
-    
 
+          <span className={styles.signUp__warning}>{errors?.email && <p>{errors?.email?.message}</p>}</span>
         </div>
 
         <div className={styles.signUp__label}>
           <span className={styles.signUp__description}>Password</span>
           <br />
-          <input 
+          <input
             className={styles.signUp__input}
             {...register('password', {
               required: 'Поле обязательно к заполнению',
@@ -119,12 +108,10 @@ const SignUp = () => {
             onChange={(e) => {
               console.log(e.target.value);
               setPassword(e.target.value);
-              }}
-      
+            }}
           />
           <br />
-              <span className={styles.signUp__warning}>{errors?.password && <p>{errors?.password?.message}</p>}</span>
-  
+          <span className={styles.signUp__warning}>{errors?.password && <p>{errors?.password?.message}</p>}</span>
         </div>
 
         <div className={styles.signUp__label}>
@@ -142,16 +129,16 @@ const SignUp = () => {
               },
               value: {
                 value: '1111',
-                message: 'error'
-              }
+                message: 'error',
+              },
             })}
-            onChange={(e) => setPassword2(e.target.value)} 
+            onChange={(e) => setPassword2(e.target.value)}
           />
 
-
-              <span className={styles.signUp__warning}>{password === password2 ? errors?.password2 && <p>{errors?.password2?.message}</p>: 'Пароли не совпадают!' }</span>
-              <br />
-
+          <span className={styles.signUp__warning}>
+            {password === password2 ? errors?.password2 && <p>{errors?.password2?.message}</p> : 'Пароли не совпадают!'}
+          </span>
+          <br />
         </div>
         <Check descript={'I agree to the processing of my personal information'} />
         <input type="submit" className={styles.signUp__submit} disabled={!isValid} />

@@ -18,7 +18,6 @@ const List = () => {
   
   const dataReceiver = (data) => {
     setArticles(data.articles);
-    console.log(data);
     setTotalPages(Math.ceil(data.articlesCount/5))
   }
 
