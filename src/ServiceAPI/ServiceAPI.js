@@ -1,4 +1,4 @@
-
+/* eslint-disable */
 class ServiceApi {
 
     constructor() {
@@ -6,13 +6,8 @@ class ServiceApi {
       this.forUsers = 'users/'
       this.forArticles = 'articles/';
     }
-    defaultResponce = () => {
-      console.log('Передайте колбэк для респонса!');
-    }
-    defaultError = () => {
-      console.log('Передайте колбэк для ошибки');
-    }
-    createUser = (username, email, password, onResponse = this.defaultResponce, onError = this.defaultError ) => {
+
+     createUser (username, email, password, onResponse = this.defaultResponce, onError = this.defaultError ) {
         let obj = {
           user: {
             username: username,
@@ -35,7 +30,7 @@ class ServiceApi {
   
     }
   
-    getArticles = (onResponse, onError, limit = 5, offset = 0 ) => {
+   getArticles (onResponse, onError, limit = 5, offset = 0 ) {
   
       fetch(this.baseUrl + this.forArticles + `?limit=${limit}&&offset=${offset}`, {
         method: "GET",
