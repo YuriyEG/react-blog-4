@@ -51,8 +51,9 @@ const CreateArticle = () => {
         
   };
 
-  const addTag = (receivedTag) => {
+  const addTag = (e) => {
 
+    e.preventDefault();
     setTags([curTag, ...tags]);
     setCurTag('');
 
@@ -121,7 +122,7 @@ const CreateArticle = () => {
         } */}
         <div className={styles.createArticle__tagWrapper}>
           <input value={curTag} className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
-          <button className={styles.addTagButton} onClick={() => addTag()}>Add tag</button>
+          <button className={styles.addTagButton} onClick={(e) => addTag(e)}>Add tag</button>
         </div>
 
         {/* <div className={styles.createArticle__tagWrapper}>
