@@ -15,6 +15,7 @@ import EditProfile from '../EditProfile';
 import SignUp from '../SignUp';
 import Article from '../Article';
 
+
 import styles from './App.module.css';
 
 
@@ -28,6 +29,7 @@ const App = () => {
     <Router>
       <div className={styles.app}>
         <Header />
+        <Article />
         <Route path="/"  component={List} exact/>
         <Route path="/articles" component={List} exact/>
         <Route path="/sign-up" component={SignUp} exact/>
@@ -35,7 +37,8 @@ const App = () => {
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
         <Route path="/articles/{slug}/edit" component={EditArticle} />
-        <Route path="/articles/ajax-dlya-novichkov-76zrdo" component={Article} />
+        {/* <Route path="/articles/ajax-dlya-novichkov-76zrdo" component={Article} /> */}
+
       
       </div>
     </Router>
