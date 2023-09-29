@@ -105,10 +105,12 @@ const CreateArticle = () => {
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
         </div> */}
-        { tags.map( (tag) => <div>
+        { 
+          tags.map( (tag) => (<div>
           <input className={styles.createArticle__tagInput} value={tag} />
           <DeleteButton value="Delete" />
-        </div>)}
+        </div>))
+        }
         <div className={styles.createArticle__tagWrapper}>
           <input className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
           <button className={styles.addTagButton} onClick={() => setTags(curTag)}>Add tag</button>
