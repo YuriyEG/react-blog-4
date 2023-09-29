@@ -63,12 +63,9 @@ const CreateArticle = () => {
 
   const deleteTagHandler = (e) => {
     
-    
     let newTags = [...tags].filter( tag => tag.id != e.target.id );
-    console.log(newTags);
-
-
-
+    setTags(newTags);
+    
   }
   useEffect( () => {
     console.log('tags', tags);
