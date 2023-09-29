@@ -88,8 +88,8 @@ const SignUp = () => {
               },
               minLength: { value: 4, message: 'Минимум 4 символа' },
               maxLength: {
-                value: 50,
-                message: 'Максимум 50 символов',
+                value: 100,
+                message: 'Максимум 100 символов',
               },
             })}
           />
