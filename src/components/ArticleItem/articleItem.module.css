@@ -65,6 +65,7 @@
 
 .articleItem__tags {
 
+    height: 20px;
     margin-top: 8px;
     display: flex;
     flex-direction: row;
