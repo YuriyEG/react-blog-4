@@ -20,7 +20,7 @@ const List = () => {
     setArticles(data.articles);
 
     setTotalPages(Math.ceil(data.articlesCount/5))
-    console.log(articles);
+ 
   }
 
 

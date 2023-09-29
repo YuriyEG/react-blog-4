@@ -8,7 +8,7 @@ import { ar } from 'date-fns/locale';
 import styles from './articleItem.module.css';
 
 const ArticleItem = ({ article }) => {
-
+  console.log(article);
   let imageUrl;
   let author = 'no author';
   let date = 'no date';
