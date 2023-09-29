@@ -211,13 +211,7 @@
 .article__body {
     width: 880px;
     min-height: 685px;
-    border: 1px solid black;
     margin-top: 20px;
     color: rgba(0, 0, 0, 0.75);
     font-size: 18px;
 }
-
-
-/* div {
-    border: 1px solid black;
-} */
