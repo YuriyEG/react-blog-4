@@ -48,8 +48,9 @@ const Article = ({itemId}) => {
   const deleteHandler = () => {
     console.log('itemid: ', itemId);
     service.deleteArticle(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
-   
-    
+  }
+  const addToFavorites = () => {
+    console.log(itemId);
   }
     
   return (
@@ -59,8 +60,8 @@ const Article = ({itemId}) => {
         <div className={styles.article__title}>
           <span className={styles.article__titleBox}>{article.title}</span>
 
-          <div className={styles.article__like}></div>
-          <div className={styles.article__count}>4</div>
+          <div className={styles.article__like} onClick={addToFavorites}></div>
+          <div className={styles.article__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.article__tags}>
           {article.tagList?.map((value) => (
