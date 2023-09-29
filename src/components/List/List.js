@@ -34,8 +34,8 @@ const List = ({history}) => {
       {articles.map((article) => (
         <ArticleItem article={article} key={Math.random()*Date.now() }
           onItemSelected={ (slug) => {
-            console.log(slug);
-            // history.push(`/articles/${itemId}`);
+            console.log(slug); 
+            history.push(`/articles/${slug}`);
           }}
         />
       ))}

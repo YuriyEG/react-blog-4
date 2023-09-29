@@ -29,21 +29,20 @@ const App = () => {
     <Router>
       <div className={styles.app}>
         <Header />
-        <Article />
         <Route path="/"  component={List} exact/>
-        <Route path="/articles" component={List} exact/>
+        <Route path="/articles" component={List}/>
         <Route path="/articles/:id" render={
            ({ match, location, history }) => {
             console.log(match);
             const { id } = match.params;
-            return <Article itemId={id} />
+            return <Article itemId={'redux-okdq9t'} />
            }}/>
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" component={SignIn} exact/>
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
-        <Route path="/articles/{slug}/edit" component={EditArticle} />
-        {/* <Route path="/articles/ajax-dlya-novichkov-76zrdo" component={Article} /> */}
+        {/* <Route path="/articles/{slug}/edit" component={EditArticle} exact /> */}
+
 
       
       </div>
