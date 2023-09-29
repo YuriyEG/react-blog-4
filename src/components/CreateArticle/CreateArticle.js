@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React from 'react';
+import React, { useState } from 'react';
 
 import DeleteButton from '../DeleteButton';
 import AddTagButton from '../AddTagButton';
@@ -14,6 +14,8 @@ import styles from './createArticle.module.css';
 const service = new ServiseAPI();
 
 const CreateArticle = () => {
+
+  const [tags, setTags] = useState([]);
 
   const {
     register,
@@ -95,8 +97,18 @@ const CreateArticle = () => {
           />
         </div>
 
+
         <div className={styles.createArticle__description}>Tags</div>
+        {/* <div className={styles.createArticle__tagWrapper}>
+          <input className={styles.createArticle__tagInput} />
+          <DeleteButton value="Delete" />
+        </div> */}
         <div className={styles.createArticle__tagWrapper}>
+          <input className={styles.createArticle__tagInput} />
+          <AddTagButton />
+        </div>
+
+        {/* <div className={styles.createArticle__tagWrapper}>
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
           <AddTagButton />
@@ -110,12 +122,7 @@ const CreateArticle = () => {
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
           <AddTagButton />
-        </div>
-        <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <DeleteButton value="Delete" />
-          <AddTagButton />
-        </div>
+        </div> */}
         <button className={styles.sendButton}>Send</button>
         
       </form>
