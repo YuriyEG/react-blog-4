@@ -150,19 +150,7 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
 
 }
 
-.createArticle__inputOff {
-    width: 300px;
-    height: 40px;
-    box-sizing: border-box;
-    margin-right: 16px;
-    border: 1px solid rgba(217, 217, 217, 1);
-    border-radius: 4px;
-    font-size: 16px;
-    color: rgba(0, 0, 0, 0.75);
-    text-indent: 10px;
-    display: inline-block;
-    border: none;
-}
+
 
 
 .sendButton {
