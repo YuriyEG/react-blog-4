@@ -7,7 +7,7 @@ import { ar } from 'date-fns/locale';
 
 import styles from './articleItem.module.css';
 
-const ArticleItem = ({ article }) => {
+const ArticleItem = ({ article, onItemSelected }) => {
   console.log(article);
   let imageUrl;
   let author = 'no author';
@@ -33,7 +33,7 @@ const ArticleItem = ({ article }) => {
   }
 
   return (
-    <div className={styles.articleItem}>
+    <div className={styles.articleItem} onClick={onItemSelected}>
       <div className={styles.articleItem__left}>
         <div className={styles.articleItem__title}>
           <span className={styles.articleItem__titleBox}>{article.title}</span>
