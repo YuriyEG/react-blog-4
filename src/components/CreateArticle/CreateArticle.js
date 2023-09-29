@@ -56,7 +56,7 @@ const CreateArticle = () => {
 
     e.preventDefault();
     if (curTag.length ) {
-      setTags([{ value: curTag, id: tags.length + 1}, ...tags]);
+      setTags([{ value: curTag, id: Date.now() }, ...tags]);
     setCurTag('');
     }
   }
@@ -65,7 +65,7 @@ const CreateArticle = () => {
     
     let newTags = [...tags].filter( tag => tag.id != e.target.id );
     setTags(newTags);
-    
+
   }
   useEffect( () => {
     console.log('tags', tags);
