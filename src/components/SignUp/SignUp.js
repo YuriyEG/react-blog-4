@@ -38,12 +38,15 @@ const SignUp = () => {
     if (password === password2) {
       service.createUser(
         data,
-        (res) =>  localStorage.setItem('token', res.user.token),
+        (res) => {
+          console.log(res.user.token);
+          localStorage.setItem('token', res.user.token);
+        } ,
 
         (err) => console.log(err)
       );
       reset();
-          console.log(localStorage.getItem('token'));
+         
     }
 
   };
