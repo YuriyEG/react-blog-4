@@ -38,13 +38,13 @@ class ServiceApi {
     }
 
     createArticle ( receivedArticle, apiKey,  onResponse = () => console.log('Не передан колбэк для респонса'), onError = () => console.log('не передан колбэк для ошибок')) {
-
+        const token = localStorage.getItem('token');
         fetch(this.baseUrl + this.forArticles, {
           method: "POST",
           headers: {
   
             "Content-Type": "application/json",
-            // "Authorization": `Token ` + JSON.stringify(apiKey),
+            "Authorization": `Token ${token}`,
           },
           body: JSON.stringify({ article: receivedArticle }),
         })
@@ -54,7 +54,6 @@ class ServiceApi {
     }
     
   }
-  let key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M…jg1fQ.JKGQtlidCcXFe06ChHGUGXQeJdG4PkTs7rmaX0qthnU';
   const service = new ServiceApi();
   service.createArticle({
     
@@ -65,7 +64,7 @@ class ServiceApi {
         "string"
       ]
     
-  }, key, (res) => console.log(res), (err) => console.log(err))
+  }, 'sdfsfs' , (res) => console.log(res), (err) => console.log(err))
   
   
   
