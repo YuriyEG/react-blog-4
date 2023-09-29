@@ -68,6 +68,23 @@ class ServiceApi {
           .then( res => onResponse(res))
           .catch( err => onError(err))
     }
+
+    async deleteArticle (itemId, onResponse = () => console.log('Не передан колбэк для Респонса'), onError = () => console.log('Не передан колбэк для Ошибки')) {
+      console.log('Получили: ', itemId );
+      const token = localStorage.getItem('token');
+        fetch(this.baseUrl + this.forArticles + itemId , {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${token}`,
+          },
+        })
+          .then( res => res.json())
+          .then( res => onResponse(res))
+          .catch( err => onError(err))
+    }
+
+    
   }
 
   

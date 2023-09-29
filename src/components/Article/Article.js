@@ -39,6 +39,12 @@ const Article = ({itemId}) => {
   const Tag = ({ value }) => {
     return <div className={styles.article__tag}>{value}</div>;
   }
+
+  const deleteHandler = () => {
+    service.deleteArticle(itemId) {
+      console.log(itemId);
+    }
+  }
     
   return (
     <div className={styles.article}>
@@ -68,7 +74,7 @@ const Article = ({itemId}) => {
           <div className={styles.article__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
         <div className={styles.article__buttonWrapper}>
-          <div className={styles.article__deleteButton}>Delete</div>
+          <div className={styles.article__deleteButton} onClick={deleteHandler}>Delete</div>
           <div className={styles.article__editButton}>Edit</div>
         </div>
       </div>
