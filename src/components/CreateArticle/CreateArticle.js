@@ -58,8 +58,12 @@ const CreateArticle = () => {
       setTags([{ value: curTag, id: tags.length + 1}, ...tags]);
     setCurTag('');
     }
+  }
 
+  const deleteTagHandler = (e) => {
     
+    let newTags = [...tags].filter( tag => tag.id !== e.target.value);
+    console.log(e.target.value, newTags);
 
   }
   useEffect( () => {
@@ -118,7 +122,7 @@ const CreateArticle = () => {
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
         </div> */}
-        <div onClick={ e => console.log(e.target.id)}>
+        <div onClick={deleteTagHandler}>
                  { 
           tags.map( (tag) => (<div className={styles.createArticle__tagWrapper}>
           <input className={styles.createArticle__tagInput} value={tag.value} />
