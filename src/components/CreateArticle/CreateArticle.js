@@ -31,6 +31,7 @@ const CreateArticle = () => {
   });
 
   const onSubmit = (data) => {
+      
       console.log(data);
       // service.createArticle(
       //   data,
@@ -55,7 +56,15 @@ const CreateArticle = () => {
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Title</div>
 
-          <input type="text" className={styles.createArticle__input} />
+          <input className={styles.createArticle__input}
+                      {...register('title', {
+              required: 'Поле обязательно к заполнению',
+              minLength: { value: 3, message: 'Минимум 3 символа' },
+              maxLength: {
+                value: 20,
+                message: 'Максимум 20 символов',
+              },
+            })} />
         </div>
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Short description</div>
@@ -89,7 +98,7 @@ const CreateArticle = () => {
           <DeleteButton value="Delete" />
           <AddTagButton />
         </div>
-        <SendButton />
+        <button className={styles.sendButton}>Send</button>
         
       </form>
     </div>
