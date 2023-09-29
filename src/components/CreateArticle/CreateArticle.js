@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import DeleteButton from '../DeleteButton';
 import AddTagButton from '../AddTagButton';
@@ -15,7 +15,7 @@ const service = new ServiseAPI();
 
 const CreateArticle = () => {
 
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(['one', 'two']);
   const [curTag, setCurTag] = useState('');
 
   const {
@@ -35,23 +35,31 @@ const CreateArticle = () => {
 
   const onSubmit = (data) => {
       
-      console.log(data);
-      // service.createArticle(
-      //   data,
-      //   (res) => {
-      //     console.log(res);
-          
-      //   } ,
+      console.log({ ...data, tags: tags});
+      let dataWithTags = { ...data, tags: tags };
 
-      //   (err) => console.log(err)
-      // );
-      // reset();
+      service.createArticle(
+        dataWithTags,
+        (res) => {
+          console.log(res);
+          
+        } ,
+
+        (err) => console.log(err)
+      );
+      reset();
         
   };
 
-  const addTag = (tag) => {
-    setTags([tag, ...tags]);
+  const addTag = (receivedTag) => {
+
+    setTags([curTag, ...tags]);
+    setCurTag('');
+
   }
+  useEffect( () => {
+    console.log('tags', tags);
+  }, [tags])
 
   return (
     <div className={styles.createArticle}>
@@ -105,15 +113,15 @@ const CreateArticle = () => {
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
         </div> */}
-        { 
+        {/* { 
           tags.map( (tag) => (<div>
           <input className={styles.createArticle__tagInput} value={tag} />
           <DeleteButton value="Delete" />
         </div>))
-        }
+        } */}
         <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
-          <button className={styles.addTagButton} onClick={() => setTags(curTag)}>Add tag</button>
+          <input value={curTag} className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
+          <button className={styles.addTagButton} onClick={() => addTag()}>Add tag</button>
         </div>
 
         {/* <div className={styles.createArticle__tagWrapper}>

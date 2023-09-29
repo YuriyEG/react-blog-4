@@ -37,8 +37,8 @@ class ServiceApi {
   
     }
 
-    createArticle ( receivedArticle,  onResponse = () => console.log('Не передан колбэк для респонса'), onError = () => console.log('не передан колбэк для ошибок')) {
-        console.log('Передаем ', receivedArticle);
+    async createArticle ( receivedArticle,  onResponse = () => console.log('Не передан колбэк для респонса'), onError = () => console.log('не передан колбэк для ошибок')) {
+        console.log('Передаем ', receivedArticle, );
       const token = localStorage.getItem('token');
         fetch(this.baseUrl + this.forArticles, {
           method: "POST",
@@ -55,7 +55,7 @@ class ServiceApi {
     }
     
   }
-  const service = new ServiceApi();
+  // const service = new ServiceApi();
   // service.createArticle({
     
   //     "title": "Зачем разработчикам React",
