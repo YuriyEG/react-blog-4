@@ -43,8 +43,9 @@ const SignUp = () => {
         (err) => console.log(err)
       );
       reset();
+          console.log(localStorage.getItem('token'));
     }
-    console.log(localStorage.getItem('token'));
+
   };
 
   return (
