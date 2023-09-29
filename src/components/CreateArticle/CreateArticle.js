@@ -90,7 +90,7 @@ const CreateArticle = () => {
               required: 'Поле обязательно к заполнению',
               minLength: { value: 10, message: 'Минимум 10 символов' },
               maxLength: {
-                value: 100,
+                value: 1000,
                 message: '1000',
               },
             })}
