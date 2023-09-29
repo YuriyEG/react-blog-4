@@ -11,11 +11,16 @@ const service = new ServiceApi();
 
 const Article = ({itemId}) => {
 
+ 
   const [article, setArticle] = useState({});
   const [loaded, setLoaded] = useState(false);
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
   }, []);
+
+  useEffect( () => {
+    console.log(article);
+  }, [article]);
 
   let imageUrl;
   let author = 'no author';
@@ -41,9 +46,10 @@ const Article = ({itemId}) => {
   }
 
   const deleteHandler = () => {
-    service.deleteArticle(itemId) {
-      console.log(itemId);
-    }
+    console.log('itemid: ', itemId);
+    service.deleteArticle(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
+   
+    
   }
     
   return (

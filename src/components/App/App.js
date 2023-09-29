@@ -35,7 +35,7 @@ const App = () => {
            ({ match, location, history }) => {
             console.log(match);
             const { id } = match.params;
-            return <Article itemId={'redux-okdq9t'} />
+            return <Article itemId={id} />
            }}/>
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" component={SignIn} exact/>
