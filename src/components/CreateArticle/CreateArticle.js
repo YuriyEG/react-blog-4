@@ -52,6 +52,7 @@ const CreateArticle = () => {
         (err) => console.log(err)
       );
       reset();
+      setTags([]);
         
   };
 

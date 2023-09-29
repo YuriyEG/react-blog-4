@@ -49,8 +49,12 @@ const Article = ({itemId}) => {
     console.log('itemid: ', itemId);
     service.deleteArticle(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
   }
+
+  const editHandler = () => {
+    console.log('edit');
+  }
   const addToFavorites = () => {
-    console.log(itemId);
+    service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
   }
     
   return (
@@ -82,7 +86,7 @@ const Article = ({itemId}) => {
         </div>
         <div className={styles.article__buttonWrapper}>
           <div className={styles.article__deleteButton} onClick={deleteHandler}>Delete</div>
-          <div className={styles.article__editButton}>Edit</div>
+          <div className={styles.article__editButton} onClick={editHandler}>Edit</div>
         </div>
       </div>
       

@@ -87,8 +87,8 @@ class ServiceApi {
           .catch( err => onError(err))
     }
 
-    async deleteArticle (slug, onResponse = () => console.log('Не передан колбэк для Респонса'), onError = () => console.log('Не передан колбэк для Ошибки')) {
-      console.log('Получили: ', itemId );
+    async toFavorites (slug, onResponse = () => console.log('Не передан колбэк для Респонса'), onError = () => console.log('Не передан колбэк для Ошибки')) {
+      console.log('Получили: ', slug );
       const token = localStorage.getItem('token');
       
 
@@ -104,13 +104,5 @@ class ServiceApi {
           .then( res => onResponse(res))
           .catch( err => onError(err))
     }
-
-    
   }
-
-  
-  
-  
-
-
   export default ServiceApi;
