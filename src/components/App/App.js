@@ -35,7 +35,8 @@ const App = () => {
         <Route path="/articles/:id" render={
            ({ match, location, history }) => {
             console.log(match);
-            return <Article itemId="123" />
+            const { id } = match.params;
+            return <Article itemId={id} />
            }}/>
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" component={SignIn} exact/>
