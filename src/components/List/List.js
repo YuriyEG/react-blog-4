@@ -33,8 +33,9 @@ const List = ({history}) => {
     <div className={styles.list}>
       {articles.map((article) => (
         <ArticleItem article={article} key={Math.random()*Date.now()}
-          onItemSelected={ (itemId) => {
-            history.push(`/articles/${itemId}`);
+          onItemSelected={ (e) => {
+            console.log('selected', e)
+            // history.push(`/articles/${itemId}`);
           }}
         />
       ))}
