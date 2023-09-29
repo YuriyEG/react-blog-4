@@ -13,7 +13,7 @@
     margin-bottom: 28px;
     padding: 15px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
     margin-left: auto;
@@ -24,8 +24,8 @@
 }
 
 .article__headWrapper {
-    width: 941px;
-    height: 150px;
+    width: 916px;
+    height: 110px;
     display: flex;
     flex-direction: row;
 }
@@ -35,6 +35,7 @@
     display: flex;
     flex-direction: column;
 }
+
 
 .article__title {
     height: 28px;
@@ -117,7 +118,47 @@
     white-space: pre-wrap;
 }
 .article__right {
-    width: 24%;
+    width: 224px;
+}
+
+.article__buttonWrapper {
+    width: 224px;
+    height: 60px;
+
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-top: 26px;
+    padding-left: 40px;
+
+}
+
+.article__deleteButton {
+    width: 78px;
+    height: 32px;
+    border: 1px solid rgba(245, 34, 45, 1);
+    border-radius: 5px;
+    color: rgba(245, 34, 45, 1);
+    box-sizing: border-box;
+    padding: 6px;
+    text-align: center;
+    margin-right: 12px;
+    
+    font-size: 14px;
+    
+}
+
+.article__editButton {
+    width: 66px;
+    height: 32px;
+    border: 1px solid rgba(82, 196, 26, 1);
+    border-radius: 5px;
+    color: rgba(82, 196, 26, 1);
+    box-sizing: border-box;
+    padding: 6px;
+    text-align: center;
+    font-size: 14px;
 }
 
 .article__profileCard {
@@ -167,4 +208,14 @@
     text-align: right;
 }
 
+.article__body {
+    width: 880px;
+    min-height: 685px;
+    border: 1px solid black;
+    margin-top: 20px;
+}
 
+
+/* div {
+    border: 1px solid black;
+} */

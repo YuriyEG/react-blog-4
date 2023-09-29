@@ -56,7 +56,7 @@ const Article = ({itemId}) => {
           ))}
         </div>
         <div className={styles.article__description}>
-          { article.body }
+          { article.description }
         </div>
       </div>
       <div className={styles.article__right}>
@@ -67,7 +67,15 @@ const Article = ({itemId}) => {
           </div>
           <div className={styles.article__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
+        <div className={styles.article__buttonWrapper}>
+          <div className={styles.article__deleteButton}>Delete</div>
+          <div className={styles.article__editButton}>Edit</div>
+        </div>
       </div>
+      
+      </div>
+      <div className={styles.article__body}>
+        {article.body}
       </div>
       
     </div>
