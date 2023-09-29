@@ -23,15 +23,34 @@ const CreateArticle = () => {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      email: '',
-      username: '',
-      password: '',
-      password2: '',
+      title: '',
+      description: '',
+      body: '',
+      tags: ['default'],
     },
   });
+
+  const onSubmit = (data) => {
+      console.log(data);
+      // service.createArticle(
+      //   data,
+      //   (res) => {
+      //     console.log(res);
+          
+      //   } ,
+
+      //   (err) => console.log(err)
+      // );
+      // reset();
+         
+
+
+  };
+
+
   return (
     <div className={styles.createArticle}>
-      <form className={styles.createArticle__form}>
+      <form className={styles.createArticle__form} onSubmit={handleSubmit(onSubmit)} >
         <div className={styles.createArticle__title}>Create new article</div>
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Title</div>

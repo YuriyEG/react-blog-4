@@ -37,7 +37,7 @@ class ServiceApi {
   
     }
 
-    createArticle ( receivedArticle, apiKey,  onResponse = () => console.log('Не передан колбэк для респонса'), onError = () => console.log('не передан колбэк для ошибок')) {
+    createArticle ( receivedArticle,  onResponse = () => console.log('Не передан колбэк для респонса'), onError = () => console.log('не передан колбэк для ошибок')) {
         console.log('Передаем ', receivedArticle);
       const token = localStorage.getItem('token');
         fetch(this.baseUrl + this.forArticles, {
