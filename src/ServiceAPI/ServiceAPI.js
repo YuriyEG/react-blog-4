@@ -44,7 +44,7 @@ class ServiceApi {
           headers: {
   
             "Content-Type": "application/json",
-            "Authorization": `Token ` + JSON.stringify(apiKey),
+            // "Authorization": `Token ` + JSON.stringify(apiKey),
           },
           body: JSON.stringify({ article: receivedArticle }),
         })
