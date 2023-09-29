@@ -33,7 +33,7 @@ const ArticleItem = ({ article, onItemSelected }) => {
   }
 
   return (
-    <div className={styles.articleItem} onClick={onItemSelected} id={article.slug} >
+    <div className={styles.articleItem} onClick={() => onItemSelected(article.slug)}>
       <div className={styles.articleItem__left}>
         <div className={styles.articleItem__title}>
           <span className={styles.articleItem__titleBox}>{article.title}</span>
