@@ -66,7 +66,7 @@ const CreateArticle = () => {
     
     // let newTags = [...tags].filter( tag => tag.id === e.target.id );
     tags.map( tag => {
-      console.log(tag.id, tag.value);
+      console.log(tag.id ===  e.target.id);
     })
 
 
