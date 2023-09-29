@@ -116,7 +116,7 @@ const CreateArticle = () => {
         </div> */}
         { 
           tags.map( (tag) => (<div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} value={tag} />
+          <input className={styles.createArticle__inputOff} value={tag} />
           <button className={styles.deleteButton}>Delete</button>
         </div>))
         }
