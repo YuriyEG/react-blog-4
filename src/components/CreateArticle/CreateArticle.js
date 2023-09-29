@@ -55,7 +55,7 @@ const CreateArticle = () => {
 
     e.preventDefault();
     if (curTag.length ) {
-      setTags([curTag, ...tags]);
+      setTags([{ value: curTag, id: tags.length + 1}, ...tags]);
     setCurTag('');
     }
 
@@ -120,8 +120,8 @@ const CreateArticle = () => {
         </div> */}
         { 
           tags.map( (tag) => (<div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} value={tag} />
-          <button className={styles.deleteButton}>Delete</button>
+          <input className={styles.createArticle__tagInput} value={tag.value} />
+          <button id={tag.id} className={styles.deleteButton}>Delete</button>
         </div>))
         }
         <div className={styles.createArticle__tagWrapper}>
