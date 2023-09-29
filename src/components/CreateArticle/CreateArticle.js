@@ -118,12 +118,15 @@ const CreateArticle = () => {
           <input className={styles.createArticle__tagInput} />
           <DeleteButton value="Delete" />
         </div> */}
-        { 
+        <div onClick={ e => console.log(e.target.id)}>
+                 { 
           tags.map( (tag) => (<div className={styles.createArticle__tagWrapper}>
           <input className={styles.createArticle__tagInput} value={tag.value} />
           <button id={tag.id} className={styles.deleteButton}>Delete</button>
         </div>))
-        }
+        } 
+        </div>
+
         <div className={styles.createArticle__tagWrapper}>
           <input value={curTag} className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
           <button className={styles.addTagButton} onClick={(e) => addTag(e)}>Add tag</button>
