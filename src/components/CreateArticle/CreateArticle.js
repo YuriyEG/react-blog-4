@@ -54,8 +54,11 @@ const CreateArticle = () => {
   const addTag = (e) => {
 
     e.preventDefault();
-    setTags([curTag, ...tags]);
+    if (curTag.length && curTag.length <= 30 ) {
+      setTags([curTag, ...tags]);
     setCurTag('');
+    }
+    
 
   }
   useEffect( () => {
