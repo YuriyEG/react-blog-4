@@ -27,13 +27,13 @@ const App = () => {
     <Router>
       <div className={styles.app}>
         <Header />
-        {/* <Route path="/"  component={List} exact/>
+        <Route path="/"  component={List} exact/>
         <Route path="/articles" component={List} exact/>
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" component={SignIn} exact/>
-        <Route path="/profile" component={EditProfile} exact/> */}
+        <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
-        {/* <Route path="/articles/{slug}/edit" component={EditArticle} /> */}
+        <Route path="/articles/{slug}/edit" component={EditArticle} />
       
       </div>
     </Router>
