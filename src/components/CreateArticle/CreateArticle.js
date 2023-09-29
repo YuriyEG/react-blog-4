@@ -36,6 +36,7 @@ const CreateArticle = () => {
   const onSubmit = (data) => {
       
       console.log({ ...data, tags: tags});
+    
       let dataWithTags = { ...data, tagList: tags };
 
       service.createArticle(
@@ -62,8 +63,8 @@ const CreateArticle = () => {
 
   const deleteTagHandler = (e) => {
     
-    let newTags = [...tags].filter( tag => tag.id !== e.target.value);
-    console.log(e.target.value, newTags);
+    let newTags = [...tags].filter( tag => tag.id !== e.target.id);
+    console.log(e.target.id, newTags);
 
   }
   useEffect( () => {
