@@ -5,9 +5,30 @@ import DeleteButton from '../DeleteButton';
 import AddTagButton from '../AddTagButton';
 import SendButton from '../SendButton';
 
+import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
+import ServiseAPI from '../../ServiceAPI/ServiceAPI';
+
 import styles from './createArticle.module.css';
 
+const service = new ServiseAPI();
+
 const CreateArticle = () => {
+
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    reset,
+  } = useForm({
+    mode: 'onBlur',
+    defaultValues: {
+      email: '',
+      username: '',
+      password: '',
+      password2: '',
+    },
+  });
   return (
     <div className={styles.createArticle}>
       <form className={styles.createArticle__form}>
