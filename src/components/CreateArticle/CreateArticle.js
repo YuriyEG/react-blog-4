@@ -122,10 +122,6 @@ const CreateArticle = () => {
 
 
         <div className={styles.createArticle__description}>Tags</div>
-        {/* <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <DeleteButton value="Delete" />
-        </div> */}
         <div onClick={deleteTagHandler}>
                  { 
           tags.map( (tag) => (<div className={styles.createArticle__tagWrapper}>
@@ -140,21 +136,6 @@ const CreateArticle = () => {
           <button className={styles.addTagButton} onClick={(e) => addTag(e)}>Add tag</button>
         </div>
 
-        {/* <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <DeleteButton value="Delete" />
-          <AddTagButton />
-        </div>
-        <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <DeleteButton value="Delete" />
-          <AddTagButton />
-        </div>
-        <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <DeleteButton value="Delete" />
-          <AddTagButton />
-        </div> */}
         <button type="submit" className={styles.sendButton}>Send</button>
         
       </form>

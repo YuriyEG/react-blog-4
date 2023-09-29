@@ -39,7 +39,7 @@ const ArticleItem = ({ article, onItemSelected }) => {
           <span className={styles.articleItem__titleBox}>{article.title}</span>
 
           <div className={styles.articleItem__like}></div>
-          <div className={styles.articleItem__count}>4</div>
+          <div className={styles.articleItem__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.articleItem__tags}>
           {article.tagList?.map((value) => (
@@ -47,7 +47,7 @@ const ArticleItem = ({ article, onItemSelected }) => {
           ))}
         </div>
         <div className={styles.articleItem__description}>
-          { article.body }
+          { article.description }
         </div>
       </div>
       <div className={styles.articleItem__right}>
