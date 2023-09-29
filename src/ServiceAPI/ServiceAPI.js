@@ -72,7 +72,6 @@ class ServiceApi {
     async deleteArticle (itemId, onResponse = () => console.log('Не передан колбэк для Респонса'), onError = () => console.log('Не передан колбэк для Ошибки')) {
       console.log('Получили: ', itemId );
       const token = localStorage.getItem('token');
-      const token2 = JSON.parse(token);
       
 
       
