@@ -35,20 +35,23 @@ const CreateArticle = () => {
 
   const onSubmit = (data) => {
       
-      console.log({ ...data, tags: tags});
+      
+      let sendedTags = [];
+      tags.forEach( tag => sendedTags.push(tag.value));
+      console.log({ ...data, tags: sendedTags });
     
-      let dataWithTags = { ...data, tagList: tags };
+      let dataWithTags = { ...data, tagList: sendedTags };
 
-      service.createArticle(
-        dataWithTags,
-        (res) => {
-          console.log(res);
+      // service.createArticle(
+      //   dataWithTags,
+      //   (res) => {
+      //     console.log(res);
           
-        } ,
+      //   } ,
 
-        (err) => console.log(err)
-      );
-      reset();
+      //   (err) => console.log(err)
+      // );
+      // reset();
         
   };
 
