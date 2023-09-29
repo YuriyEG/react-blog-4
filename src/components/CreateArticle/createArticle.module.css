@@ -173,7 +173,7 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
 }
 
 .addTagButton {
-    
+
     width: 136px;
     height: 40px;
     border-radius: 4px;
@@ -186,8 +186,21 @@ box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
     box-sizing: border-box;
     background-color: white;
     font-size: 16px;
-    margin-left: 16px;
 
+}
+
+.deleteButton {
+    width: 120px;
+    height: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(245, 34, 45, 1);
+    display: block;
+    font-family: "Medium", Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    color:rgba(245, 34, 45, 1);
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 16px;
 
 }
 
