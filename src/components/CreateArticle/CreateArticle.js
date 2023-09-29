@@ -16,6 +16,7 @@ const service = new ServiseAPI();
 const CreateArticle = () => {
 
   const [tags, setTags] = useState([]);
+  const [curTag, setCurTag] = useState('');
 
   const {
     register,
@@ -45,11 +46,12 @@ const CreateArticle = () => {
       //   (err) => console.log(err)
       // );
       // reset();
-         
-
-
+        
   };
 
+  const addTag = (tag) => {
+    setTags([tag, ...tags]);
+  }
 
   return (
     <div className={styles.createArticle}>
@@ -108,8 +110,8 @@ const CreateArticle = () => {
           <DeleteButton value="Delete" />
         </div>)}
         <div className={styles.createArticle__tagWrapper}>
-          <input className={styles.createArticle__tagInput} />
-          <AddTagButton />
+          <input className={styles.createArticle__tagInput} onChange={(e) => setCurTag(e.target.value)}/>
+          <button className={styles.addTagButton} onClick={() => setTags(curTag)}>Add tag</button>
         </div>
 
         {/* <div className={styles.createArticle__tagWrapper}>
