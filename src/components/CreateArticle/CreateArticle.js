@@ -69,12 +69,30 @@ const CreateArticle = () => {
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Short description</div>
 
-          <input className={styles.createArticle__input} />
+          <input className={styles.createArticle__input} 
+                        {...register('description', {
+              required: 'Поле обязательно к заполнению',
+              minLength: { value: 4, message: 'Минимум 4 символа' },
+              maxLength: {
+                value: 100,
+                message: 'Максимум 100 символов',
+              },
+            })}
+          />
         </div>
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Text</div>
 
-          <textarea className={styles.createArticle__area} width="874px" type="text" />
+          <textarea className={styles.createArticle__area} width="874px" type="text" 
+                        {...register('body', {
+              required: 'Поле обязательно к заполнению',
+              minLength: { value: 10, message: 'Минимум 10 символов' },
+              maxLength: {
+                value: 100,
+                message: '1000',
+              },
+            })}
+          />
         </div>
 
         <div className={styles.createArticle__description}>Tags</div>
