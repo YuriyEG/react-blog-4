@@ -63,7 +63,7 @@ const CreateArticle = () => {
 
   const deleteTagHandler = (e) => {
     
-    let newTags = [...tags].filter( tag => tag.id !== e.target.id);
+    let newTags = [...tags].filter( tag => tag.id === 1 );
     console.log(e.target.id, newTags);
 
   }
