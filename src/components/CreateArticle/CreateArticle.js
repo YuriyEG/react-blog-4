@@ -36,7 +36,7 @@ const CreateArticle = () => {
   const onSubmit = (data) => {
       
       console.log({ ...data, tags: tags});
-      let dataWithTags = { ...data, tags: tags };
+      let dataWithTags = { ...data, tagList: tags };
 
       service.createArticle(
         dataWithTags,
