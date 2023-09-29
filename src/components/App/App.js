@@ -13,6 +13,7 @@ import List from '../List';
 import SignIn from '../SignIn';
 import EditProfile from '../EditProfile';
 import SignUp from '../SignUp';
+import Article from '../Article';
 
 import styles from './App.module.css';
 
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
         <Route path="/articles/{slug}/edit" component={EditArticle} />
+        <Route path="/articles/{slug}" component={Article} />
       
       </div>
     </Router>
