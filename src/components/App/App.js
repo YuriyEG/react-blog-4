@@ -35,7 +35,7 @@ const App = () => {
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
         <Route path="/articles/{slug}/edit" component={EditArticle} />
-        <Route path="/articles/{slug}" component={Article} />
+        <Route path="/articles/ajax-dlya-novichkov-76zrdo" component={Article} />
       
       </div>
     </Router>
