@@ -22,21 +22,21 @@ import styles from './App.module.css';
 
 const App = () => {
 
- const [authentificated, setAuthentificated ] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false)); 
+ const [authentificated, setAuthentificated ] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false)); 
   
 
   return (
     <Router>
       <div className={styles.app}>
-        <Header />
-        <Route path="/"  component={List} exact/>
-        <Route path="/articles" component={List}/>
+        <Header path="/" exact />
+        <Route path="/"  component={List} exact />
+        <Route path="/articles" component={List} exact />
         <Route path="/articles/:id" render={
            ({ match, location, history }) => {
             console.log(match);
             const { id } = match.params;
             return <Article itemId={id} />
-           }}/>
+           }} exact />
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" component={SignIn} exact/>
         <Route path="/profile" component={EditProfile} exact/>
