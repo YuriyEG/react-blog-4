@@ -104,5 +104,22 @@ class ServiceApi {
           .then( res => onResponse(res))
           .catch( err => onError(err))
     }
+
+    async editArticle (slug, receivedArticle,  onResponse = () => console.log('Не передан колбэк для Респонса'), onError = () => console.log('Не передан колбэк для Ошибки')) {
+      console.log('Получили: ', slug, receivedArticle );
+      const token = localStorage.getItem('token');
+      
+        fetch(this.baseUrl + this.forArticles + slug , {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Token ${token}`,
+          },
+          body: JSON.stringify({ article: receivedArticle }),
+        })
+          .then( res => res.json())
+          .then( res => onResponse(res))
+          .catch( err => onError(err))
+    }
   }
   export default ServiceApi;

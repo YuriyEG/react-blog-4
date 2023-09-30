@@ -41,6 +41,13 @@ const App = () => {
         <Route path="/sign-in" component={SignIn} exact/>
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
+        <Route path="/articles/:slug/edit" render={
+          ({match, location, history }) => {
+            console.log(match);
+            const { slug } = match.params;
+            return <EditArticle slug={slug} exact />
+          }
+        }/>
         {/* <Route path="/articles/{slug}/edit" component={EditArticle} exact /> */}
 
 

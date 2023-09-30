@@ -6,10 +6,11 @@ import format from 'date-fns/format';
 import { ar } from 'date-fns/locale';
 
 import styles from './article.module.css';
+import { withRouter } from 'react-router-dom';
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 const service = new ServiceApi();
 
-const Article = ({itemId}) => {
+const Article = ({itemId, history}) => {
 
  
   const [article, setArticle] = useState({});
@@ -51,7 +52,8 @@ const Article = ({itemId}) => {
   }
 
   const editHandler = () => {
-    console.log('edit');
+   
+    history.push(`/articles/${itemId}/edit`);
   }
   const addToFavorites = () => {
     service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
@@ -99,4 +101,4 @@ const Article = ({itemId}) => {
   );
 };
 
-export default Article;
+export default withRouter(Article);
