@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
@@ -17,12 +17,19 @@ import Article from '../Article';
 
 
 import styles from './App.module.css';
-
-
+import ServiceApi from '../../ServiceAPI/ServiceAPI';
+const service = new ServiceApi();
 
 const App = () => {
 
  const [authentificated, setAuthentificated ] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false)); 
+
+ useEffect( () => {
+  service.getCurrentUser((res) => {
+    console.log('app:', res);
+    localStorage.setItem('userData', JSON.stringify(res))
+  }, (err) => console.log(err));
+ }, [])
   
 
   return (

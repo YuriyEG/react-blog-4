@@ -17,7 +17,10 @@ const Header = () => {
           Sign In
         </Link>
       </div>
-
+      <Link className={styles.header__profileBox} to="/profile">
+        <div className={styles.header__name}>John Doe</div>
+        <div className={styles.header__logo}></div>
+      </Link>
       <div className={styles.signUpButton}>
         <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-up">
           Sign Up
