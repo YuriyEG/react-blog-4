@@ -1,6 +1,9 @@
+/* eslint-disable */
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { withRouter } from 'react-router-dom';
 
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 
@@ -8,7 +11,7 @@ import styles from './signIn.module.css';
 
 const service = new ServiceApi();
 
-const SignIn = () => {
+const SignIn = ({ history }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -28,9 +31,11 @@ const SignIn = () => {
       data.email,
       data.password,
       (res) => {
-        localStorage.setItem('currenttoken', JSON.stringify(res.user.token));
+ 
         localStorage.setItem('userData', JSON.stringify(data));
-        console.log(res);
+        localStorage.setItem('isAuth', 'true');
+        history.push(`/articles`);
+
       },
 
       (err) => console.log(err)
@@ -49,6 +54,8 @@ const SignIn = () => {
     //   (err) => console.log(err)
     // );
   };
+
+
   return (
     <div className={styles.signIn}>
       <form className={styles.signIn__form} onSubmit={handleSubmit(onSubmit)}>
@@ -95,7 +102,7 @@ const SignIn = () => {
           <span className={styles.signIn__warning}>{errors?.password && <p>{errors?.password?.message}</p>}</span>
         </div>
 
-        <input type="submit" className={styles.signIn__submit} name="submit_btn" value="Login" />
+        <input type="submit" className={styles.signIn__submit} name="submit_btn" value="Login"/>
         <div className={styles.signIn__question}>
           Don&#8217;t have an account?{' '}
           <Link to="/sign-up" className={styles.signIn__questionBlue}>
@@ -107,4 +114,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default withRouter(SignIn);

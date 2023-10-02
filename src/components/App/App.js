@@ -31,6 +31,7 @@ const App = () => {
   }, (err) => console.log(err));
  }, [])
   
+ console.log(localStorage.getItem('isAuth'));
 
   return (
     <Router>
