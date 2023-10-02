@@ -23,11 +23,12 @@ const service = new ServiceApi();
 const App = () => {
 
  const [auth, setAuth ] = useState(localStorage.getItem('isAuth'));
+ const [curUser, setCurUser] = useState({});
+ console.log('authorization is: ', localStorage.getItem('isAuth'), auth);
 
  useEffect( () => {
   service.getCurrentUser((res) => {
-    console.log('app:', res);
-    localStorage.setItem('userData', JSON.stringify(res))
+    setCurUser(res);
   }, (err) => console.log(err));
  }, [])
   

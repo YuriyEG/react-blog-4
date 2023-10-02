@@ -2,10 +2,11 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import styles from './header.module.css';
 
-const Header = ( { auth, setAuth }) => {
+const Header = ( { auth, setAuth, history }) => {
 
   const logOut = () => {
     console.log('click');
@@ -13,10 +14,11 @@ const Header = ( { auth, setAuth }) => {
     // setIsAuth('false');
     localStorage.setItem('isAuth', 'false');
     setAuth('false');
+    
   };
 
   const logIn = () => {
-    setIsAuth('true');
+    setAuth('true');
   };
 
   window.addEventListener('storage', () => console.log(localStorage.getItem('isAuth')))
@@ -54,7 +56,7 @@ const Header = ( { auth, setAuth }) => {
         </div>
       ) : (
         <div className={styles.signUpButton} onClick={logOut}>
-          <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-up">
+          <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-in">
             Log Out
           </Link>
         </div>
@@ -63,4 +65,4 @@ const Header = ( { auth, setAuth }) => {
   );
 };
 
-export default Header;
+export default withRouter(Header);

@@ -9,7 +9,10 @@ import styles from './editProfile.module.css';
 
 const service = new ServiceApi();
 
-const EditProfile = () => {
+
+const EditProfile = ({ curUser }) => {
+
+
   const {
     register,
     formState: { errors, isValid },
@@ -18,10 +21,10 @@ const EditProfile = () => {
   } = useForm({
     mode: 'onBlur',
     defaultValues: {
-      email: JSON.parse(localStorage.getItem('userData')).user.email,
-      username: JSON.parse(localStorage.getItem('userData')).user.username,
+      email: '',
+      username: '',
       password: '',
-      image: JSON.parse(localStorage.getItem('userData')).user.image,
+      image: '',
     },
   });
 
@@ -35,7 +38,13 @@ const EditProfile = () => {
     reset();
   };
 
+  console.log(curUser);
+  // const email = curUser.user.email;
+  // const username = curUser.user.username;
+  // const image = curUser.user.image;
+
   return (
+  
     <div className={styles.editProfile}>
       <form className={styles.editProfile__form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.editProfile__title}>Edit Profile</div>
@@ -95,9 +104,10 @@ const EditProfile = () => {
           <br />
         </div>
 
-        <input type="submit" className={styles.editProfile__submit} name="submit_btn" value="Login" />
+        <input type="submit" className={styles.editProfile__submit} name="submit_btn" value="Login" disabled={!isValid}/>
       </form>
     </div>
+ 
   );
 };
 

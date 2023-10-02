@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import Check from '../Check';
 import ServiseAPI from '../../ServiceAPI/ServiceAPI';
@@ -11,7 +12,7 @@ import styles from './signUp.module.css';
 
 const service = new ServiseAPI();
 
-const SignUp = () => {
+const SignUp = ({ history }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -46,6 +47,7 @@ const SignUp = () => {
         (err) => console.log(err)
       );
       reset();
+      history.push('sign-in/');
          
     }
 
@@ -159,4 +161,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default withRouter(SignUp);
