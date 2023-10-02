@@ -11,7 +11,7 @@ import styles from './signIn.module.css';
 
 const service = new ServiceApi();
 
-const SignIn = ({ history }) => {
+const SignIn = ({ history, auth, setAuth }) => {
   const {
     register,
     formState: { errors, isValid },
@@ -34,6 +34,7 @@ const SignIn = ({ history }) => {
  
         localStorage.setItem('userData', JSON.stringify(data));
         localStorage.setItem('isAuth', 'true');
+        setAuth('true');
         history.push(`/articles`);
 
       },

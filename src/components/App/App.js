@@ -22,7 +22,7 @@ const service = new ServiceApi();
 
 const App = () => {
 
- const [authentificated, setAuthentificated ] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false)); 
+ const [auth, setAuth ] = useState(localStorage.getItem('isAuth'));
 
  useEffect( () => {
   service.getCurrentUser((res) => {
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <Router>
       <div className={styles.app}>
-        <Header path="/" exact />
+        <Header path="/" exact auth={auth} setAuth={setAuth} />
         <Route path="/"  component={List} exact />
         <Route path="/articles" component={List} exact />
         <Route path="/articles/:id" render={
@@ -46,7 +46,9 @@ const App = () => {
             return <Article itemId={id} />
            }} exact />
         <Route path="/sign-up" component={SignUp} exact/>
-        <Route path="/sign-in" component={SignIn} exact/>
+        <Route path="/sign-in" render={ () => {
+          return <SignIn auth={auth} setAuth={setAuth} />
+        }}  exact/>
         <Route path="/profile" component={EditProfile} exact/>
         <Route path="/new-article" component={CreateArticle} exact />
         <Route path="/articles/:slug/edit" render={

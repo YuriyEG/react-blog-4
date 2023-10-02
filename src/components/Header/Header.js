@@ -1,47 +1,52 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import styles from './header.module.css';
 
-const Header = () => {
-  const [isAuth, setIsAuth] = useState(localStorage.getItem('isAuth'));
+const Header = ( { auth, setAuth }) => {
+
   const logOut = () => {
     console.log('click');
     // console.log(isAuth);
     // setIsAuth('false');
     localStorage.setItem('isAuth', 'false');
-    setIsAuth('false');
+    setAuth('false');
   };
 
   const logIn = () => {
     setIsAuth('true');
   };
 
+  window.addEventListener('storage', () => console.log(localStorage.getItem('isAuth')))
+
+
   return (
     <div className={styles.header}>
       <Link className={styles.header__title} style={{ color: 'rgba(0, 0, 0, 0.85)', textDecoration: 'none' }} to="/">
         Realworld Blog
       </Link>
-      {isAuth === 'true' ? (
+      {auth === 'true' ? (
         <Link className={styles.createArticleButton} to="/new-article">
           Create article
         </Link>
       ) : null}
-      {isAuth === 'false' ? (
+      {auth === 'false' ? (
         <div className={styles.signInButton}>
           <Link style={{ textDecoration: 'none' }} to="/sign-in">
             Sign In
           </Link>
         </div>
       ) : null}
-      {isAuth === 'true' ? (
+      {auth === 'true' ? (
         <Link className={styles.header__profileBox} to="/profile">
           <div className={styles.header__name}>John Doe</div>
           <div className={styles.header__logo}></div>
         </Link>
       ) : null}
 
-      {isAuth === 'false' ? (
+      {auth === 'false' ? (
         <div className={styles.signUpButton}>
           <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-up">
             Sign Up
