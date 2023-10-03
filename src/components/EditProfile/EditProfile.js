@@ -12,12 +12,17 @@ const service = new ServiceApi();
 
 const EditProfile = ({ curUser }) => {
 
-  const [userData, setUserData] = useState(null);
 
-  useEffect( () => {
-   const userD = JSON.parse(localStorage.getItem('userData'));
-  setUserData(userD);     
-  }, [])
+
+
+
+  async function func() {
+    let userD = await JSON.parse(localStorage.getItem('userData'));
+    document.getElementById('username').value = userD.user.username;
+    document.getElementById('email').value = userD.user.email;
+    document.getElementById('image').value = userD.user.image;
+    console.log(userD, 'sfdsfsfs');
+  }
 
 
 
@@ -48,14 +53,9 @@ const EditProfile = ({ curUser }) => {
   };
 
     useEffect(() => {
-      if (userData !== null) {
-        console.log('useffect', userData);
-        document.getElementById('username').value = userData.user.username;
-        document.getElementById('email').value = userData.user.email;
-        document.getElementById('image').value = userData.user.image;
-      }
+        func();
         
-    }, [userData]);
+    }, []);
 
   return (
   
