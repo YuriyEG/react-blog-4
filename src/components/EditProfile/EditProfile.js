@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useRef } from 'react';
 
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 
@@ -12,16 +13,20 @@ const service = new ServiceApi();
 
 const EditProfile = ({ curUser }) => {
 
+  
 
 
 
 
   async function func() {
+
+    
     let userD = await JSON.parse(localStorage.getItem('userData'));
     document.getElementById('username').value = userD.user.username;
     document.getElementById('email').value = userD.user.email;
     document.getElementById('image').value = userD.user.image;
     console.log(userD, 'sfdsfsfs');
+
   }
 
 
@@ -53,7 +58,10 @@ const EditProfile = ({ curUser }) => {
   };
 
     useEffect(() => {
-        func();
+      setTimeout(() => {
+             func();   
+      }, 1000);
+
         
     }, []);
 
@@ -74,7 +82,7 @@ const EditProfile = ({ curUser }) => {
           <span className={styles.editProfile__email}>Email address</span>
           <br />
           <input
-            id="email"
+            id='email'
             className={styles.editProfile__input}
             {...register('email', {
               pattern: {
