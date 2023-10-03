@@ -12,6 +12,15 @@ const service = new ServiceApi();
 
 const EditProfile = ({ curUser }) => {
 
+  const [userData, setUserData] = useState(null);
+
+  useEffect( () => {
+   const userD = JSON.parse(localStorage.getItem('userData'));
+  setUserData(userD);     
+  }, [])
+
+
+
 
   const {
     register,
@@ -38,10 +47,15 @@ const EditProfile = ({ curUser }) => {
     reset();
   };
 
-  console.log(curUser);
-  // const email = curUser.user.email;
-  // const username = curUser.user.username;
-  // const image = curUser.user.image;
+    useEffect(() => {
+      if (userData !== null) {
+        console.log('useffect', userData);
+        document.getElementById('username').value = userData.user.username;
+        document.getElementById('email').value = userData.user.email;
+        document.getElementById('image').value = userData.user.image;
+      }
+        
+    }, [userData]);
 
   return (
   
@@ -52,7 +66,7 @@ const EditProfile = ({ curUser }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Username</span>
           <br />
-          <input className={styles.editProfile__input} {...register('username')} />
+          <input id='username' className={styles.editProfile__input} {...register('username')} />
           <br />
         </div>
 
@@ -83,6 +97,7 @@ const EditProfile = ({ curUser }) => {
           <span className={styles.editProfile__email}>New password</span>
           <br />
           <input
+            
             className={styles.editProfile__input}
             {...register('password', {
               minLength: { value: 6, message: 'Минимум 6 символов' },
@@ -100,7 +115,7 @@ const EditProfile = ({ curUser }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Avatar img (url)</span>
           <br />
-          <input className={styles.editProfile__input} {...register('image')} />
+          <input id='image' className={styles.editProfile__input} {...register('image')} />
           <br />
         </div>
 

@@ -30,7 +30,8 @@ const App = () => {
 
  useEffect( () => {
   service.getCurrentUser((res) => {
-    setCurUser(res);
+  
+    localStorage.setItem('userData', JSON.stringify(res));
   }, (err) => console.log(err));
  }, [])
   
@@ -55,7 +56,10 @@ const App = () => {
         <Route path="/sign-in" render={ () => {
           return <SignIn auth={auth} setAuth={setAuth} />
         }}  exact/>
-        <Route path="/profile" component={EditProfile} exact/>
+        <Route path="/profile" 
+        render={ () => {
+          return <EditProfile curUser={curUser}/>
+        }} />
         <Route path="/new-article" exact 
           render={ () => {
             return <CreateArticle auth={auth}/>
@@ -69,7 +73,9 @@ const App = () => {
             }
             console.log(match);
             const { slug } = match.params;
-            return <EditArticle slug={slug} exact />
+            return <EditArticle slug={slug}
+            
+             />
           }
         }/>
         <Route render={ () => <h1 style={{ marginTop: '50px', marginLeft: '40%'}}>Page not found!</h1>}/>
