@@ -31,29 +31,15 @@ const SignIn = ({ history, auth, setAuth }) => {
       data.email,
       data.password,
       (res) => {
- 
-        localStorage.setItem('userData', JSON.stringify(data));
+        // localStorage.setItem('userData', JSON.stringify(data));
         localStorage.setItem('isAuth', 'true');
         setAuth('true');
         history.push(`/articles`);
-
       },
 
       (err) => console.log(err)
     );
     reset();
-
-    // service.updateCurrentUser(
-    //   {
-    //     user: {
-    //       bio: 'HelI work at State Farm.',
-    //       image: 'https://i.ibb.co/dtP7My9/ert.jpg',
-    //     },
-    //   },
-
-    //   (res) => console.log(res),
-    //   (err) => console.log(err)
-    // );
   };
 
 

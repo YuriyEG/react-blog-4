@@ -24,15 +24,21 @@ const service = new ServiceApi();
 
 const App = () => {
 
- const [auth, setAuth ] = useState(localStorage.getItem('isAuth'));
- const [curUser, setCurUser] = useState({});
- console.log('authorization is: ', localStorage.getItem('isAuth'), auth);
+ const [auth, setAuth ] = useState('false');
 
+ const [curUser, setCurUser] = useState({});
+
+ console.log('authorization is: ', localStorage.getItem('isAuth'), auth);
+ 
  useEffect( () => {
+
+  if (localStorage.getItem('isAuth')) {
+    setAuth(localStorage.getItem('isAuth'));
+  }
   service.getCurrentUser((res) => {
     console.log('РЕСПОНС')
-  
     setCurUser(res);
+
   }, (err) => console.log(err));
  }, [])
   

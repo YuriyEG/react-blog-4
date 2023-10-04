@@ -18,9 +18,9 @@ const Header = ( { auth, setAuth, history, curUser }) => {
     setAuth('false');
   };
 
-  const logIn = () => {
-    setAuth('true');
-  };
+  // const logIn = () => {
+  //   setAuth('true');
+  // };
 
 
   useEffect( () => {
@@ -53,10 +53,6 @@ const Header = ( { auth, setAuth, history, curUser }) => {
           <div className={styles.header__name} >{userName}</div>
           <div className={styles.header__logo}  style={{ backgroundImage: `url(${imageUrl})`, 
           backgroundSize: '100%'}}></div>
-     
-    
-    
-          
         </Link>
       ) : null}
 
