@@ -1,34 +1,36 @@
 /* eslint-disable */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import './default.jpg';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
 import styles from './header.module.css';
 
 const Header = ( { auth, setAuth, history, curUser }) => {
-    let classImage = { backgroundColor: 'black'};
-  if (curUser.user) {
-    const image = curUser.user.image;
-    classImage = {backgroundImage: `url(${image})`};
-  }
-  
+
+  const [userName, setUserName ] = useState('no Name');
+  const [imageUrl, setImageUrl] = useState('https://i.ibb.co/n7qPrMB/Lost-via-domus-soundtrack.jpg');
+  console.log(curUser);
+
   const logOut = () => {
-    console.log('click');
-    // console.log(isAuth);
-    // setIsAuth('false');
     localStorage.setItem('isAuth', 'false');
     setAuth('false');
-    
   };
 
   const logIn = () => {
     setAuth('true');
   };
 
-  window.addEventListener('storage', () => console.log(localStorage.getItem('isAuth')))
 
+  useEffect( () => {
+    if (curUser.user) {
+      setUserName(curUser.user.username);
+      setImageUrl(curUser.user.image);
+    }
+  }, [curUser])
 
+  
   return (
     <div className={styles.header}>
       <Link className={styles.header__title} style={{ color: 'rgba(0, 0, 0, 0.85)', textDecoration: 'none' }} to="/">
@@ -48,8 +50,13 @@ const Header = ( { auth, setAuth, history, curUser }) => {
       ) : null}
       {auth === 'true' ? (
         <Link className={styles.header__profileBox} to="/profile">
-          <div className={styles.header__name}>John Doe</div>
-          <div className={styles.header__logo} style={classImage}></div>
+          <div className={styles.header__name} >{userName}</div>
+          <div className={styles.header__logo}  style={{ backgroundImage: `url(${imageUrl})`, 
+          backgroundSize: '100%'}}></div>
+     
+    
+    
+          
         </Link>
       ) : null}
 

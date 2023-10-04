@@ -30,6 +30,7 @@ const App = () => {
 
  useEffect( () => {
   service.getCurrentUser((res) => {
+    console.log('РЕСПОНС')
   
     setCurUser(res);
   }, (err) => console.log(err));
