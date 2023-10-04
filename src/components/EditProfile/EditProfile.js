@@ -1,8 +1,7 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
-import { useRef } from 'react';
 
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 
@@ -10,27 +9,17 @@ import styles from './editProfile.module.css';
 
 const service = new ServiceApi();
 
-
 const EditProfile = ({ curUser }) => {
 
   
-
-
-
-
-  async function func() {
-
-    
-    let userD = await JSON.parse(localStorage.getItem('userData'));
-    document.getElementById('username').value = userD.user.username;
-    document.getElementById('email').value = userD.user.email;
-    document.getElementById('image').value = userD.user.image;
-    console.log(userD, 'sfdsfsfs');
-
-  }
-
-
-
+  useEffect(() => {
+    if (curUser.user) {
+      const { user } = curUser;
+      document.getElementById('username').placeholder = user.username;
+      document.getElementById('email').placeholder = user.email;
+      document.getElementById('image').placeholder = user.image;
+    }
+  }, [curUser]);
 
   const {
     register,
@@ -57,16 +46,7 @@ const EditProfile = ({ curUser }) => {
     reset();
   };
 
-    useEffect(() => {
-      setTimeout(() => {
-             func();   
-      }, 1000);
-
-        
-    }, []);
-
   return (
-  
     <div className={styles.editProfile}>
       <form className={styles.editProfile__form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.editProfile__title}>Edit Profile</div>
@@ -74,7 +54,7 @@ const EditProfile = ({ curUser }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Username</span>
           <br />
-          <input id='username' className={styles.editProfile__input} {...register('username')} />
+          <input id="username" className={styles.editProfile__input} {...register('username')} />
           <br />
         </div>
 
@@ -82,7 +62,7 @@ const EditProfile = ({ curUser }) => {
           <span className={styles.editProfile__email}>Email address</span>
           <br />
           <input
-            id='email'
+            id="email"
             className={styles.editProfile__input}
             {...register('email', {
               pattern: {
@@ -105,7 +85,6 @@ const EditProfile = ({ curUser }) => {
           <span className={styles.editProfile__email}>New password</span>
           <br />
           <input
-            
             className={styles.editProfile__input}
             {...register('password', {
               minLength: { value: 6, message: 'Минимум 6 символов' },
@@ -123,14 +102,19 @@ const EditProfile = ({ curUser }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Avatar img (url)</span>
           <br />
-          <input id='image' className={styles.editProfile__input} {...register('image')} />
+          <input id="image" className={styles.editProfile__input} {...register('image')} />
           <br />
         </div>
 
-        <input type="submit" className={styles.editProfile__submit} name="submit_btn" value="Login" disabled={!isValid}/>
+        <input
+          type="submit"
+          className={styles.editProfile__submit}
+          name="submit_btn"
+          value="Login"
+          disabled={!isValid}
+        />
       </form>
     </div>
- 
   );
 };
 

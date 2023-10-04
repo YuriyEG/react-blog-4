@@ -31,7 +31,7 @@ const App = () => {
  useEffect( () => {
   service.getCurrentUser((res) => {
   
-    localStorage.setItem('userData', JSON.stringify(res));
+    setCurUser(res);
   }, (err) => console.log(err));
  }, [])
   
@@ -40,7 +40,7 @@ const App = () => {
   return (
     <Router>
       <div className={styles.app}>
-        <Header path="/" exact auth={auth} setAuth={setAuth} />
+        <Header path="/" exact auth={auth} setAuth={setAuth} curUser={curUser} />
         <Switch>
 
      
