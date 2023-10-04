@@ -57,8 +57,10 @@ const EditProfile = ({ curUser, history }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Username</span>
           <br />
-          <input id="username" className={styles.editProfile__input} {...register('username')} />
+          <input id="username" className={styles.editProfile__input} {...register('username',
+          {required: 'Поле обязательно к заполнению'})} />
           <br />
+          <span className={styles.editProfile__warning}>{errors?.username && <p>{errors?.username?.message}</p>}</span>
         </div>
 
         <div className={styles.editProfile__label}>
@@ -68,6 +70,7 @@ const EditProfile = ({ curUser, history }) => {
             id="email"
             className={styles.editProfile__input}
             {...register('email', {
+              required: 'Поле обязательно к заполнению',
               pattern: {
                 value:
                   /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/,
@@ -81,6 +84,7 @@ const EditProfile = ({ curUser, history }) => {
             })}
           />
           <br />
+          
           <span className={styles.editProfile__warning}>{errors?.email && <p>{errors?.email?.message}</p>}</span>
         </div>
 
@@ -90,6 +94,7 @@ const EditProfile = ({ curUser, history }) => {
           <input
             className={styles.editProfile__input}
             {...register('password', {
+             
               minLength: { value: 6, message: 'Минимум 6 символов' },
               maxLength: {
                 value: 40,
@@ -105,8 +110,10 @@ const EditProfile = ({ curUser, history }) => {
         <div className={styles.editProfile__label}>
           <span className={styles.editProfile__email}>Avatar img (url)</span>
           <br />
-          <input id="image" className={styles.editProfile__input} {...register('image')} />
+          <input id="image" className={styles.editProfile__input} {...register('image',
+          { required: 'Поле обязательно к заполнению'})} />
           <br />
+          <span className={styles.editProfile__warning}>{errors?.image && <p>{errors?.image?.message}</p>}</span>
         </div>
 
         <input

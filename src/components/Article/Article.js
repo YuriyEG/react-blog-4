@@ -77,6 +77,8 @@ const Article = ({itemId, history, auth, curUser }) => {
     
   console.table('curUser:', cur_user );
   console.table('author', author);
+  
+  
   return (
     <div className={styles.article}>
       <div className={styles.article__headWrapper}>
@@ -84,7 +86,7 @@ const Article = ({itemId, history, auth, curUser }) => {
         <div className={styles.article__title}>
           <span className={styles.article__titleBox}>{article.title}</span>
 
-          <div className={styles.article__like} onClick={addToFavorites}></div>
+          <div className={article.favoritesCount ?  styles.article__liked :  styles.article__like} onClick={addToFavorites}></div>
           <div className={styles.article__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.article__tags}>

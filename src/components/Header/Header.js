@@ -18,10 +18,6 @@ const Header = ( { auth, setAuth, history, curUser }) => {
     setAuth('false');
   };
 
-  // const logIn = () => {
-  //   setAuth('true');
-  // };
-
 
   useEffect( () => {
     if (curUser.user) {

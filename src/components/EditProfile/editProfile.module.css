@@ -4,41 +4,37 @@
 }
 
 .editProfile {
+
     border: 1px solid rgba(217, 217, 217, 1);
     border-radius: 6px;
     width: 384px;
-    height: 500px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
-    
-    box-shadow: 0px 0.6087964177131653px 2.9332919120788574px 0px rgba(0, 0, 0, 0.0197);
+    overflow: hidden;
 
+    box-shadow: 0px 0.6087964177131653px 2.9332919120788574px 0px rgba(0, 0, 0, 0.0197);
     box-shadow: 0px 1.4630224704742432px 7.049108028411865px 0px rgba(0, 0, 0, 0.0283);
-    
     box-shadow: 0px 2.7547414302825928px 13.272845268249512px 0px rgba(0, 0, 0, 0.035);
-    
     box-shadow: 0px 4.91398811340332px 23.67648696899414px 0px rgba(0, 0, 0, 0.0417);
-    
     box-shadow: 0px 9.19107437133789px 44.28426742553711px 0px rgba(0, 0, 0, 0.0503);
-    
     box-shadow: 0px 22px 106px 0px rgba(0, 0, 0, 0.07);
-    ;
+    
     background-color: white;
     
     font-family: "Regular", Arial, Helvetica, sans-serif;
-    box-sizing: border-box;
-
+ 
+    padding-bottom: 32px;
     margin-top: 60px;
 }
 
 .editProfile__form {
     width: 320px;
-    height: 374px;
+    min-height: 374px;
     margin-left: auto;
     margin-right: auto;
     box-sizing: border-box;
 
-    
 }
 
 .editProfile__title {

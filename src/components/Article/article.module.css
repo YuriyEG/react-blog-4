@@ -20,7 +20,6 @@
     margin-right: auto;
     margin-top: 62px;
     
-    
 
 }
 
@@ -62,6 +61,15 @@
     margin-left: 14px;
     align-self: center;
     background-image: url('./Vector.svg');
+}
+.article__liked {
+    height: 16px;
+    width: 16px;
+
+    display: inline-block;
+    margin-left: 14px;
+    align-self: center;
+    background-image: url('./Liked.svg');
 }
 
 .article__count {

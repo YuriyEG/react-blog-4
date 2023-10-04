@@ -53,6 +53,16 @@
     background-image: url('./Vector.svg');
 }
 
+.articleItem__liked {
+    height: 16px;
+    width: 16px;
+
+    display: inline-block;
+    margin-left: 14px;
+    align-self: center;
+    background-image: url('./Liked.svg');
+}
+
 .articleItem__count {
 
     height: 22px;

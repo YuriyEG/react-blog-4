@@ -38,7 +38,7 @@ const ArticleItem = ({ article, onItemSelected }) => {
         <div className={styles.articleItem__title}>
           <span className={styles.articleItem__titleBox}>{article.title}</span>
 
-          <div className={styles.articleItem__like}></div>
+          <div className={styles.articleItem__like} className={article.favoritesCount ?  styles.articleItem__liked :  styles.articleItem__like}></div>
           <div className={styles.articleItem__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.articleItem__tags}>
