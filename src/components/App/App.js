@@ -34,6 +34,9 @@ const App = () => {
 
   if (localStorage.getItem('isAuth')) {
     setAuth(localStorage.getItem('isAuth'));
+  } else {
+    localStorage.setItem('isAuth', 'false');
+    setAuth('false');
   }
   service.getCurrentUser((res) => {
     console.log('РЕСПОНС')
