@@ -1,23 +1,33 @@
 /* eslint-disable */
 
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 import styles from './header.module.css';
 
-const Header = ({ auth, setAuth, curUser }) => {
-  let classImage = { backgroundColor: 'black' };
-  let username = '';
+const Header = ( { auth, setAuth, history, curUser }) => {
+    let classImage = { backgroundColor: 'black'};
   if (curUser.user) {
-    const { image } = curUser.user;
-    classImage = { backgroundImage: `url(${image})` };
-    username = curUser.user.username;
+    const image = curUser.user.image;
+    classImage = {backgroundImage: `url(${image})`};
   }
-
+  
   const logOut = () => {
+    console.log('click');
+    // console.log(isAuth);
+    // setIsAuth('false');
     localStorage.setItem('isAuth', 'false');
     setAuth('false');
+    
   };
+
+  const logIn = () => {
+    setAuth('true');
+  };
+
+  window.addEventListener('storage', () => console.log(localStorage.getItem('isAuth')))
+
 
   return (
     <div className={styles.header}>
@@ -38,7 +48,7 @@ const Header = ({ auth, setAuth, curUser }) => {
       ) : null}
       {auth === 'true' ? (
         <Link className={styles.header__profileBox} to="/profile">
-          <div className={styles.header__name}>{username}</div>
+          <div className={styles.header__name}>John Doe</div>
           <div className={styles.header__logo} style={classImage}></div>
         </Link>
       ) : null}
