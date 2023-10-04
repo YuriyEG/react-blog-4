@@ -6,14 +6,16 @@ import AddTagButton from '../AddTagButton';
 import SendButton from '../SendButton';
 
 import { useForm } from 'react-hook-form';
+import { withRouter } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import ServiseAPI from '../../ServiceAPI/ServiceAPI';
 
 import styles from './createArticle.module.css';
 
+
 const service = new ServiseAPI();
 
-const CreateArticle = () => {
+const CreateArticle = ({history}) => {
 
   const [tags, setTags] = useState([]);
   const [curTag, setCurTag] = useState('');
@@ -53,6 +55,8 @@ const CreateArticle = () => {
       );
       reset();
       setTags([]);
+
+      history.push('/articles');
         
   };
 
@@ -69,6 +73,7 @@ const CreateArticle = () => {
     
     let newTags = [...tags].filter( tag => tag.id != e.target.id );
     setTags(newTags);
+   
 
   }
   useEffect( () => {
@@ -144,4 +149,4 @@ const CreateArticle = () => {
   );
 };
 
-export default CreateArticle;
+export default withRouter(CreateArticle);

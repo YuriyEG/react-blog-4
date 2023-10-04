@@ -10,11 +10,12 @@ import { withRouter } from 'react-router-dom';
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 const service = new ServiceApi();
 
-const Article = ({itemId, history}) => {
+const Article = ({itemId, history, auth, curUser }) => {
 
- 
+  
   const [article, setArticle] = useState({});
-  const [loaded, setLoaded] = useState(false);
+  const [cur_user, setCur_user] = useState('');
+
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
   }, []);
@@ -22,6 +23,12 @@ const Article = ({itemId, history}) => {
   useEffect( () => {
     console.log(article);
   }, [article]);
+
+  useEffect( () => {
+    if (curUser.user) {
+      setCur_user(curUser.user.username);
+    }
+  }, [curUser])
 
   let imageUrl;
   let author = 'no author';
@@ -38,6 +45,8 @@ const Article = ({itemId, history}) => {
   if (article.author) {
     imageUrl = article.author.image;
   }
+
+ 
   
   
  
@@ -48,7 +57,14 @@ const Article = ({itemId, history}) => {
 
   const deleteHandler = () => {
     console.log('itemid: ', itemId);
-    service.deleteArticle(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
+    service.deleteArticle(itemId, (res) => {
+      
+      console.log('result',res);
+      
+    } , (err) => console.log('error:', err));
+    setTimeout(() => {
+      history.push('/articles');
+    }, 1000);
   }
 
   const editHandler = () => {
@@ -59,6 +75,8 @@ const Article = ({itemId, history}) => {
     service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
   }
     
+  console.table('curUser:', cur_user );
+  console.table('author', author);
   return (
     <div className={styles.article}>
       <div className={styles.article__headWrapper}>
@@ -86,10 +104,13 @@ const Article = ({itemId, history}) => {
           </div>
           <div className={styles.article__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
+        { (auth === 'true') && (cur_user === author) ? (
         <div className={styles.article__buttonWrapper}>
           <div className={styles.article__deleteButton} onClick={deleteHandler}>Delete</div>
           <div className={styles.article__editButton} onClick={editHandler}>Edit</div>
         </div>
+        ) : null }
+
       </div>
       
       </div>

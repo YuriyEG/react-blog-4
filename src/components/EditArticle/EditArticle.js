@@ -6,12 +6,13 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import ServiseAPI from '../../ServiceAPI/ServiceAPI';
+import { withRouter } from 'react-router-dom';
 
 import styles from './editArticle.module.css';
 
 const service = new ServiseAPI();
 
-const EditArticle = ({slug }) => {
+const EditArticle = ({slug, history}) => {
 
 
 
@@ -88,6 +89,8 @@ const EditArticle = ({slug }) => {
       );
       reset();
       setTags([]);
+
+      history.push('/articles');
         
   };
 
@@ -182,4 +185,4 @@ const EditArticle = ({slug }) => {
   );
 };
 
-export default EditArticle;
+export default withRouter(EditArticle);

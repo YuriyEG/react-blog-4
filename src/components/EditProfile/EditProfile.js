@@ -4,12 +4,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useForm } from 'react-hook-form';
 
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
+import { withRouter } from 'react-router-dom';
 
 import styles from './editProfile.module.css';
 
 const service = new ServiceApi();
 
-const EditProfile = ({ curUser }) => {
+const EditProfile = ({ curUser, history }) => {
 
   
   useEffect(() => {
@@ -37,6 +38,7 @@ const EditProfile = ({ curUser }) => {
   });
 
   const onSubmit = (data) => {
+    
     console.log(data);
     service.updateCurrentUser(
       { user: data },
@@ -44,6 +46,7 @@ const EditProfile = ({ curUser }) => {
       (err) => console.log(err)
     );
     reset();
+    history.push('/articles');
   };
 
   return (
@@ -118,4 +121,4 @@ const EditProfile = ({ curUser }) => {
   );
 };
 
-export default EditProfile;
+export default withRouter(EditProfile);

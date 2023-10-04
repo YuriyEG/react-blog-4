@@ -60,7 +60,7 @@ const App = () => {
            ({ match, location, history }) => {
             console.log(match);
             const { id } = match.params;
-            return <Article itemId={id} />
+            return <Article itemId={id} auth={auth} curUser={curUser}/>
            }} exact />
         <Route path="/sign-up" component={SignUp} exact/>
         <Route path="/sign-in" render={ () => {
@@ -78,9 +78,10 @@ const App = () => {
         <Route path="/articles/:slug/edit" render={
 
           ({match, location, history }) => {
-            if (auth === 'false') {
-              history.push('/sign-in');
-            }
+            console.log('status', auth)
+            // if (auth === 'false') {
+            //   history.push('/sign-in');
+            // }
             console.log(match);
             const { slug } = match.params;
             return <EditArticle slug={slug}
