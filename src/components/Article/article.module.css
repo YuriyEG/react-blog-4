@@ -61,6 +61,7 @@
     margin-left: 14px;
     align-self: center;
     background-image: url('./Vector.svg');
+    background-repeat: no-repeat;
 }
 .article__liked {
     height: 16px;
@@ -70,6 +71,7 @@
     margin-left: 14px;
     align-self: center;
     background-image: url('./Liked.svg');
+    background-repeat: no-repeat;
 }
 
 .article__count {

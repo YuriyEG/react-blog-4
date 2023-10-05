@@ -39,8 +39,9 @@
 }
 
 .articleItem__titleBox {
-    max-width: 550px;
+    max-width: 500px;
     overflow: hidden;
+
 }
 
 .articleItem__like {
@@ -51,6 +52,8 @@
     margin-left: 14px;
     align-self: center;
     background-image: url('./Vector.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .articleItem__liked {
@@ -61,6 +64,9 @@
     margin-left: 14px;
     align-self: center;
     background-image: url('./Liked.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    ;
 }
 
 .articleItem__count {
