@@ -39,7 +39,7 @@ const Header = ( { auth, setAuth, history, curUser }) => {
       ) : null}
       {auth === 'false' ? (
         <div className={styles.signInButton}>
-          <Link style={{ textDecoration: 'none' }} to="/sign-in">
+          <Link style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.85)'}} to="/sign-in">
             Sign In
           </Link>
         </div>

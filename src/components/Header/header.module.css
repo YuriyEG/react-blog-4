@@ -30,7 +30,8 @@
     color: black;
     border-radius: 5px;
     align-self: center;
-    margin-right: 28px;
+    margin-left: auto;
+    margin-right: 24px;
     font-size: 18px;
     line-height: 28px;
     font-family: "Regular", Arial, Helvetica, sans-serif;
@@ -38,15 +39,11 @@
     box-sizing: border-box;
     padding: 9px;
     text-align: center;
-    font-weight: lighter;
-    
-    
+    font-weight: lighter; 
  
 }
 
-.signInButton__value {
-    text-decoration:
-}
+
 
 .signUpButton {
     width: 109px;
