@@ -15,6 +15,7 @@ const Article = ({itemId, history, auth, curUser }) => {
   
   const [article, setArticle] = useState({});
   const [cur_user, setCur_user] = useState('');
+  const [deleteOk, setDeleteOk] = useState(false);
 
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
@@ -56,6 +57,18 @@ const Article = ({itemId, history, auth, curUser }) => {
   }
 
   const deleteHandler = () => {
+    setDeleteOk(true);
+    console.log('click');
+    console.log(deleteOk)
+    
+  }
+
+  const editHandler = () => {
+   
+    history.push(`/articles/${itemId}/edit`);
+  }
+
+  const confirmationHandler = () => {
     console.log('itemid: ', itemId);
     service.deleteArticle(itemId, (res) => {
       
@@ -64,13 +77,15 @@ const Article = ({itemId, history, auth, curUser }) => {
     } , (err) => console.log('error:', err));
     setTimeout(() => {
       history.push('/articles');
-    }, 1000);
+    }, 400);
+    setDeleteOk(false);
+    
   }
 
-  const editHandler = () => {
-   
-    history.push(`/articles/${itemId}/edit`);
+  const cancelHandler = () => {
+    setDeleteOk(false);
   }
+
   const addToFavorites = () => {
     service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
   }
@@ -108,6 +123,19 @@ const Article = ({itemId, history, auth, curUser }) => {
         </div>
         { (auth === 'true') && (cur_user === author) ? (
         <div className={styles.article__buttonWrapper}>
+
+          <div className={styles.article__dialog} style={deleteOk ? {display: 'block' }: { display: 'none'}}> 
+            <div className={styles.article__dialogInside}>
+              <div className={styles.article__dialogAngle}>
+              </div>
+              <div className={styles.article__circle}></div>
+              <div className={styles.article__question}>Are you sure to delete this article?</div>
+              <div className={styles.article__buttons}>
+                <button className={styles.article__buttonNo} onClick={cancelHandler}>No</button>
+                <button className={styles.article__buttonYes} onClick={confirmationHandler}>Yes</button>
+              </div>
+            </div>
+          </div>
           <div className={styles.article__deleteButton} onClick={deleteHandler}>Delete</div>
           <div className={styles.article__editButton} onClick={editHandler}>Edit</div>
         </div>

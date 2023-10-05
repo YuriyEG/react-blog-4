@@ -3,6 +3,11 @@
     src: url('Inter-Regular.ttf');
 }
 
+@font-face {
+    font-family: "Medium";
+    src: url('Inter-Medium.ttf');
+}
+
 .article {
 
     font-family: "Regular", Arial, Helvetica, sans-serif;
@@ -142,7 +147,105 @@
     justify-content: flex-end;
     padding-top: 26px;
     padding-left: 40px;
+    position: relative;
 
+
+}
+
+.article__dialog {
+    width: 246px;
+    height: 104px;
+    position: absolute;
+  
+    right: -168px;
+    top: 24px;
+    box-sizing: border-box;
+}
+
+.article__dialogInside {
+    width: 240px;
+    height: 104px;
+    margin-left: auto;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding-top: 12px;
+    padding-left: 36px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 18px;
+    padding-bottom: 14px;
+
+}
+
+.article__question {
+    width: 208px;
+    height: 44px;
+    color: rgba(89, 89, 89, 1);
+    font-size: 14px;
+    line-height: 22px;
+    font-family: "Medium", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    
+}
+
+.article__buttons {
+    width: 82px;
+    height: 24px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    
+}
+
+.article__buttonNo {
+    border-radius: 4px;
+    border: 1px solid rgba(217, 217, 217, 1);
+    background-color: white;
+    width: 34px;
+    height: 24px;
+    color: rgba(89, 89, 89, 1);
+    box-sizing: border-box;
+
+}
+
+.article__buttonYes {
+    border-radius: 4px;
+    background-color: rgba(24, 144, 255, 1);
+    width: 40px;
+    height: 24px;
+    border: none;
+    box-sizing: border-box;
+    color: rgba(255, 255, 255, 1);
+}
+
+.article__circle {
+    background-image: url('./circle.svg');
+    position: absolute;
+    z-index: 12;
+  
+    width: 18px;
+    height: 18px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    left: 12px;
+    top: 15px;
+}
+
+.article__dialogAngle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    z-index: 10;
+    background-color: white;
+    
+    left: 0px;
+    top: 8px;
+    transform: rotate(45deg);
 }
 
 .article__deleteButton {
