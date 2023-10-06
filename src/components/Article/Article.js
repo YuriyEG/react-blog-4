@@ -85,7 +85,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
         history.push('/articles');
       }, 400);
     } , (err) => {
-      setErrorState({status: true, message: 'Ошибка при удалени!'});
+      setErrorState({status: true, message: 'Статья удалена!'});
       setTimeout(() => {
         setErrorState({status: false, message: '' })
       }, 1500);
