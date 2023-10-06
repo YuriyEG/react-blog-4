@@ -11,7 +11,7 @@ import styles from './signUp.module.css';
 
 const service = new ServiseAPI();
 
-const SignUp = ({ history }) => {
+const SignUp = ({ history, setErrorState }) => {
   const {
     register,
     formState: { errors, isValid },
