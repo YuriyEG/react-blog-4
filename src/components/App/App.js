@@ -53,7 +53,7 @@ const App = () => {
 
             <Alert errorState={errorState} />
 
-        <Header path="/" exact auth={auth} setAuth={setAuth} curUser={curUser}  />
+        <Header path="/" exact auth={auth} setAuth={setAuth} setErrorState={setErrorState} curUser={curUser}  />
         
 
         <Switch>
@@ -74,7 +74,7 @@ const App = () => {
         }}  exact/>
         <Route path="/profile" 
         render={ () => {
-          return <EditProfile curUser={curUser}/>
+          return <EditProfile curUser={curUser} setErrorState={setErrorState} />
         }} />
         <Route path="/new-article" exact 
           render={ () => {

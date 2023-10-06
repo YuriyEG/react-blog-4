@@ -10,7 +10,7 @@ import styles from './editProfile.module.css';
 
 const service = new ServiceApi();
 
-const EditProfile = ({ curUser, history }) => {
+const EditProfile = ({ curUser, history, setErrorState }) => {
 
   
   useEffect(() => {
@@ -42,11 +42,23 @@ const EditProfile = ({ curUser, history }) => {
     console.log(data);
     service.updateCurrentUser(
       { user: data },
-      (res) => console.log('otve!!', res),
-      (err) => console.log(err)
+
+      (res) => {
+        setErrorState({status: true, message: 'Данные отредактированы!'});
+        setTimeout(() => {
+          setErrorState({status: false, message: '' })
+        }, 1500);
+        history.push('/articles');
+      },
+      (err) => {
+        setErrorState({status: true, message: 'Ошибка при отправке данных!'});
+        setTimeout(() => {
+          setErrorState({status: false, message: '' })
+        }, 1500);
+      }
     );
     reset();
-    history.push('/articles');
+
   };
 
   return (

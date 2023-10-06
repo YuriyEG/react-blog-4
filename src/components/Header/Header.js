@@ -7,7 +7,7 @@ import { withRouter } from 'react-router-dom';
 
 import styles from './header.module.css';
 
-const Header = ( { auth, setAuth, history, curUser }) => {
+const Header = ( { auth, setAuth, history, curUser, setErrorState }) => {
 
   const [userName, setUserName ] = useState('no Name');
   const [imageUrl, setImageUrl] = useState('https://i.ibb.co/n7qPrMB/Lost-via-domus-soundtrack.jpg');
@@ -15,6 +15,10 @@ const Header = ( { auth, setAuth, history, curUser }) => {
   const logOut = () => {
     localStorage.setItem('isAuth', JSON.stringify({auth: false}));
     setAuth({auth: false});
+    setErrorState({status: true, message: 'Вы вышли из своего профиля!'});
+    setTimeout(() => {
+      setErrorState({status: false, message: '' })
+    }, 1500);
   };
 
 
