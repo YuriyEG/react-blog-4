@@ -8,7 +8,11 @@ import { ar } from 'date-fns/locale';
 import styles from './articleItem.module.css';
 
 const ArticleItem = ({ article, onItemSelected }) => {
-  console.log(article);
+
+  let liked = JSON.parse(localStorage.getItem('liked_list'));
+  let slug = article.slug;
+  const iAmLiked = liked.includes(String(slug))
+
   let imageUrl;
   let author = 'no author';
   let date = 'no date';
@@ -25,20 +29,17 @@ const ArticleItem = ({ article, onItemSelected }) => {
     imageUrl = article.author.image;
   }
   
-  
- 
-
   const Tag = ({ value }) => {
     return <div className={styles.articleItem__tag}>{value}</div>;
   }
-
+ 
   return (
     <div className={styles.articleItem} onClick={() => onItemSelected(article.slug)}>
       <div className={styles.articleItem__left}>
         <div className={styles.articleItem__title}>
           <span className={styles.articleItem__titleBox}>{article.title}</span>
 
-          <div className={article.favoritesCount ?  styles.articleItem__liked :  styles.articleItem__like}></div>
+          <div className={iAmLiked ?  styles.articleItem__liked :  styles.articleItem__like}></div>
           <div className={styles.articleItem__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.articleItem__tags}>

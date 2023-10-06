@@ -18,9 +18,16 @@ const Article = ({itemId, history, auth, curUser }) => {
   const [deleteOk, setDeleteOk] = useState(false);
   const [likedFlag, setLikedFlag] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
+  const [likedList, setLikedList] = useState([]);
 
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
+      if( !localStorage.getItem('liked_list')) {
+        localStorage.setItem('liked_list', JSON.stringify([]));
+      } else {
+        let list = localStorage.getItem('liked_list');
+        setLikedList(JSON.parse(list));
+      }
   }, []);
   useEffect( () => {
       setLikedFlag(article.favorited);
@@ -88,17 +95,29 @@ const Article = ({itemId, history, auth, curUser }) => {
       service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
       setLikedFlag(true);
       setLikeCount(() => likeCount + 1)
+      let curList = JSON.parse(localStorage.getItem('liked_list'));
+      curList.push(itemId);
+      localStorage.setItem('liked_list', JSON.stringify(curList));
     } else {
       service.unFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
       setLikedFlag(false);
-      setLikeCount(() => likeCount - 1)
+      setLikeCount(() => likeCount - 1);
+      let curList = JSON.parse(localStorage.getItem('liked_list'));
+      let newList = [...curList].filter( node => node !== itemId);
+      localStorage.setItem('liked_list', JSON.stringify(newList));
+    
     }
     } else {
       history.push('/sign-in')
     }
 
+    console.log('getItem', localStorage.getItem('liked_list'))
   }
 
+
+  console.log('sfdsdfsdfsfsdfsf', article);
+
+  
   return (
     <div className={styles.article}>
       <div className={styles.article__headWrapper}>
