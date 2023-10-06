@@ -15,6 +15,8 @@ import SignIn from '../SignIn';
 import EditProfile from '../EditProfile';
 import SignUp from '../SignUp';
 import Article from '../Article';
+import Alert from '../Alert';
+import { Offline } from 'react-detect-offline';
 
 
 
@@ -27,6 +29,7 @@ const App = () => {
  const [auth, setAuth ] = useState({ auth: false });
 
  const [curUser, setCurUser] = useState({});
+ const [errorState, setErrorState] = useState({status: false, message: ''})
 
  useEffect( () => {
 
@@ -47,10 +50,15 @@ const App = () => {
   return (
     <Router>
       <div className={styles.app}>
-        <Header path="/" exact auth={auth} setAuth={setAuth} curUser={curUser} />
+
+            <Alert errorState={errorState} />
+
+        <Header path="/" exact auth={auth} setAuth={setAuth} curUser={curUser}  />
+        
+
         <Switch>
 
-     
+        
         <Route path="/"  component={List} exact />
         <Route path="/articles" component={List} exact />
         <Route path="/articles/:id" render={
@@ -60,8 +68,9 @@ const App = () => {
             return <Article itemId={id} auth={auth} curUser={curUser}/>
            }} exact />
         <Route path="/sign-up" component={SignUp} exact/>
+        
         <Route path="/sign-in" render={ () => {
-          return <SignIn auth={auth} setAuth={setAuth} />
+          return <SignIn auth={auth} setAuth={setAuth} setErrorState={setErrorState}/>
         }}  exact/>
         <Route path="/profile" 
         render={ () => {
@@ -69,7 +78,7 @@ const App = () => {
         }} />
         <Route path="/new-article" exact 
           render={ () => {
-            return <CreateArticle auth={auth}/>
+            return <CreateArticle auth={auth} setErrorState={setErrorState} errorState={errorState} />
           }}
         />
         <Route path="/articles/:slug/edit" render={

@@ -8,11 +8,12 @@ import { ar } from 'date-fns/locale';
 import styles from './article.module.css';
 import { withRouter } from 'react-router-dom';
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
+import Alert from '../Alert';
 const service = new ServiceApi();
 
 const Article = ({itemId, history, auth, curUser }) => {
 
-  
+
   const [article, setArticle] = useState({});
   const [cur_user, setCur_user] = useState('');
   const [deleteOk, setDeleteOk] = useState(false);
@@ -120,6 +121,7 @@ const Article = ({itemId, history, auth, curUser }) => {
   
   return (
     <div className={styles.article}>
+      
       <div className={styles.article__headWrapper}>
             <div className={styles.article__left}>
         <div className={styles.article__title}>

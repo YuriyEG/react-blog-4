@@ -11,7 +11,7 @@ import styles from './signIn.module.css';
 
 const service = new ServiceApi();
 
-const SignIn = ({ history, auth, setAuth }) => {
+const SignIn = ({ history, auth, setAuth, setErrorState}) => {
   const {
     register,
     formState: { errors, isValid },
@@ -31,13 +31,34 @@ const SignIn = ({ history, auth, setAuth }) => {
       data.email,
       data.password,
       (res) => {
-        // localStorage.setItem('userData', JSON.stringify(data));
+        console.log(res);
+        if (res.user) {
         localStorage.setItem('isAuth',JSON.stringify( { auth: true })); 
         setAuth({ auth: true });
         history.push(`/articles`);
+        setErrorState({status: true, message: 'Вход выполнен!'});
+        setTimeout(() => {
+          setErrorState({status: false, message: '' })
+        }, 2000);
+
+        } else {
+          console.log('Неудачно!');
+          setErrorState({status: true, message: 'Введены неверные данные!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 2000);
+
+        }
+
+
       },
 
-      (err) => console.log(err)
+      (err) => {
+        setErrorState({status: true, message: 'Запрос завершился неудачно'});
+        setTimeout(() => {
+          setErrorState({status: false, message: '' })
+        }, 2000);
+      }
     );
     reset();
   };

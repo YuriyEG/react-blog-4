@@ -15,7 +15,7 @@ import styles from './createArticle.module.css';
 
 const service = new ServiseAPI();
 
-const CreateArticle = ({history}) => {
+const CreateArticle = ({history, errorState, setErrorState }) => {
 
   const [tags, setTags] = useState([]);
   const [curTag, setCurTag] = useState('');
@@ -48,10 +48,19 @@ const CreateArticle = ({history}) => {
         dataWithTags,
         (res) => {
           console.log(res);
-          
+          setErrorState({status: true, message: 'Статья успешно добавлена!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 1500);
+        
         } ,
 
-        (err) => console.log(err)
+        (err) => {
+          setErrorState({status: true, message: 'Ошибка при добавлении статьи!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 2000);
+        }
       );
       reset();
       setTags([]);
