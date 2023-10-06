@@ -67,7 +67,7 @@ const App = () => {
             const { id } = match.params;
             return <Article itemId={id} auth={auth} curUser={curUser} setErrorState={setErrorState} />
            }} exact />
-        <Route path="/sign-up" component={SignUp} exact/>
+        <Route path="/sign-up" component={SignUp} setErrorState={setErrorState} exact/>
         
         <Route path="/sign-in" render={ () => {
           return <SignIn auth={auth} setAuth={setAuth} setErrorState={setErrorState}/>
