@@ -151,7 +151,7 @@ const CreateArticle = ({history, errorState, setErrorState }) => {
           <button className={styles.addTagButton} onClick={(e) => addTag(e)}>Add tag</button>
         </div>
 
-        <button type="submit" className={styles.sendButton}>Send</button>
+        <button type="submit" className={styles.sendButton} onClick={() => { e.preventDefault() }}>Send</button>
         
       </form>
     </div>
