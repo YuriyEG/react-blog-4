@@ -1,9 +1,8 @@
-/* eslint-disable */ 
+/* eslint-disable */
 
 import React, { useEffect, useState, setErrorState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import Check from '../Check';
 import ServiseAPI from '../../ServiceAPI/ServiceAPI';
@@ -42,24 +41,23 @@ const SignUp = ({ history }) => {
         (res) => {
           console.log(res.user.token);
           localStorage.setItem('token', res.user.token);
-          setErrorState({status: true, message: 'Регистрация прошла успешно!'});
+          setErrorState({ status: true, message: 'Регистрация прошла успешно!' });
           setTimeout(() => {
-            setErrorState({status: false, message: '' })
+            setErrorState({ status: false, message: '' });
           }, 1500);
-        } ,
+        },
 
         (err) => {
-          setErrorState({status: true, message: 'При регистрации произошла ошибка!'});
+          console.log(err);
+          setErrorState({ status: true, message: 'При регистрации произошла ошибка!' });
           setTimeout(() => {
-            setErrorState({status: false, message: '' })
+            setErrorState({ status: false, message: '' });
           }, 1500);
         }
       );
       reset();
       history.push('sign-in/');
-         
     }
-
   };
 
   return (
