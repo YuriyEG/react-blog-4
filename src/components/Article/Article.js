@@ -16,10 +16,16 @@ const Article = ({itemId, history, auth, curUser }) => {
   const [article, setArticle] = useState({});
   const [cur_user, setCur_user] = useState('');
   const [deleteOk, setDeleteOk] = useState(false);
+  const [likedFlag, setLikedFlag] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
   }, []);
+  useEffect( () => {
+      setLikedFlag(article.favorited);
+      setLikeCount(article.favoritesCount);
+  }, [article])
 
   useEffect( () => {
     console.log(article);
@@ -58,9 +64,6 @@ const Article = ({itemId, history, auth, curUser }) => {
 
   const deleteHandler = () => {
     setDeleteOk(true);
-    console.log('click');
-    console.log(deleteOk)
-    
   }
 
   const editHandler = () => {
@@ -69,11 +72,8 @@ const Article = ({itemId, history, auth, curUser }) => {
   }
 
   const confirmationHandler = () => {
-    console.log('itemid: ', itemId);
     service.deleteArticle(itemId, (res) => {
-      
-      console.log('result',res);
-      
+
     } , (err) => console.log('error:', err));
     setTimeout(() => {
       history.push('/articles');
@@ -87,13 +87,18 @@ const Article = ({itemId, history, auth, curUser }) => {
   }
 
   const addToFavorites = () => {
-    service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
+    if (!likedFlag) {
+      service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
+      setLikedFlag(true);
+      setLikeCount(() => likeCount + 1)
+    } else {
+      service.unFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
+      setLikedFlag(false);
+      setLikeCount(() => likeCount - 1)
+    }
+    console.log('article:', article);
   }
-    
-  console.table('curUser:', cur_user );
-  console.table('author', author);
-  
-  
+
   return (
     <div className={styles.article}>
       <div className={styles.article__headWrapper}>
@@ -101,8 +106,8 @@ const Article = ({itemId, history, auth, curUser }) => {
         <div className={styles.article__title}>
           <span className={styles.article__titleBox}>{article.title}</span>
 
-          <div className={article.favoritesCount ?  styles.article__liked :  styles.article__like} onClick={addToFavorites}></div>
-          <div className={styles.article__count}>{article.favoritesCount}</div>
+          <div className={likedFlag ?  styles.article__liked :  styles.article__like} onClick={addToFavorites}></div>
+          <div className={styles.article__count}>{likeCount}</div>
         </div>
         <div className={styles.article__tags}>
           {article.tagList?.map((value) => (
