@@ -1,9 +1,6 @@
 /* eslint-disable */
 import React, { useEffect, useState } from 'react';
 
-import DeleteButton from '../DeleteButton';
-import AddTagButton from '../AddTagButton';
-import SendButton from '../SendButton';
 
 import { useForm } from 'react-hook-form';
 import { withRouter } from 'react-router-dom';
