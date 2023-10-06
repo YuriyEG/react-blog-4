@@ -28,10 +28,6 @@ const Article = ({itemId, history, auth, curUser }) => {
   }, [article])
 
   useEffect( () => {
-    console.log(article);
-  }, [article]);
-
-  useEffect( () => {
     if (curUser.user) {
       setCur_user(curUser.user.username);
     }
@@ -87,7 +83,7 @@ const Article = ({itemId, history, auth, curUser }) => {
   }
 
   const addToFavorites = () => {
-    if (auth === 'true') {
+    if (auth.auth) {
           if (!likedFlag) {
       service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
       setLikedFlag(true);
@@ -97,7 +93,6 @@ const Article = ({itemId, history, auth, curUser }) => {
       setLikedFlag(false);
       setLikeCount(() => likeCount - 1)
     }
-    console.log('article:', article);
     } else {
       history.push('/sign-in')
     }
@@ -131,7 +126,7 @@ const Article = ({itemId, history, auth, curUser }) => {
           </div>
           <div className={styles.article__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
-        { (auth === 'true') && (cur_user === author) ? (
+        { (auth.auth) && (cur_user === author) ? (
         <div className={styles.article__buttonWrapper}>
 
           <div className={styles.article__dialog} style={deleteOk ? {display: 'block' }: { display: 'none'}}> 

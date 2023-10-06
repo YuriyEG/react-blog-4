@@ -24,22 +24,19 @@ const service = new ServiceApi();
 
 const App = () => {
 
- const [auth, setAuth ] = useState('false');
+ const [auth, setAuth ] = useState({ auth: false });
 
  const [curUser, setCurUser] = useState({});
 
- console.log('authorization is: ', localStorage.getItem('isAuth'), auth);
- 
  useEffect( () => {
 
   if (localStorage.getItem('isAuth')) {
-    setAuth(localStorage.getItem('isAuth'));
+    setAuth(JSON.parse(localStorage.getItem('isAuth')));
   } else {
-    localStorage.setItem('isAuth', 'false');
-    setAuth('false');
+    localStorage.setItem('isAuth', JSON.stringify({ auth: false }));
+    setAuth({ auth: false });
   }
   service.getCurrentUser((res) => {
-    console.log('РЕСПОНС')
     setCurUser(res);
 
   }, (err) => console.log(err));
@@ -78,11 +75,6 @@ const App = () => {
         <Route path="/articles/:slug/edit" render={
 
           ({match, location, history }) => {
-            console.log('status', auth)
-            // if (auth === 'false') {
-            //   history.push('/sign-in');
-            // }
-            console.log(match);
             const { slug } = match.params;
             return <EditArticle slug={slug}
             

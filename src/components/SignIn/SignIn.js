@@ -32,8 +32,8 @@ const SignIn = ({ history, auth, setAuth }) => {
       data.password,
       (res) => {
         // localStorage.setItem('userData', JSON.stringify(data));
-        localStorage.setItem('isAuth', 'true');
-        setAuth('true');
+        localStorage.setItem('isAuth',JSON.stringify( { auth: true })); 
+        setAuth({ auth: true });
         history.push(`/articles`);
       },
 

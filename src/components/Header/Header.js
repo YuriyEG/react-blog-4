@@ -11,11 +11,10 @@ const Header = ( { auth, setAuth, history, curUser }) => {
 
   const [userName, setUserName ] = useState('no Name');
   const [imageUrl, setImageUrl] = useState('https://i.ibb.co/n7qPrMB/Lost-via-domus-soundtrack.jpg');
-  console.log(curUser);
 
   const logOut = () => {
-    localStorage.setItem('isAuth', 'false');
-    setAuth('false');
+    localStorage.setItem('isAuth', JSON.stringify({auth: false}));
+    setAuth({auth: false});
   };
 
 
@@ -26,25 +25,29 @@ const Header = ( { auth, setAuth, history, curUser }) => {
     }
   }, [curUser])
 
+  useEffect( () => {
+    console.log(auth);
+  }, [auth])
+
   
   return (
     <div className={styles.header}>
       <Link className={styles.header__title} style={{ color: 'rgba(0, 0, 0, 0.85)', textDecoration: 'none' }} to="/">
         Realworld Blog
       </Link>
-      {auth === 'true' ? (
+      {auth.auth ? (
         <Link className={styles.createArticleButton} to="/new-article">
           Create article
         </Link>
       ) : null}
-      {auth === 'false' ? (
+      {!auth.auth  ? (
         <div className={styles.signInButton}>
           <Link style={{ textDecoration: 'none', color: 'rgba(0, 0, 0, 0.85)'}} to="/sign-in">
             Sign In
           </Link>
         </div>
       ) : null}
-      {auth === 'true' ? (
+      {auth.auth ? (
         <Link className={styles.header__profileBox} to="/profile">
           <div className={styles.header__name} >{userName}</div>
           <div className={styles.header__logo}  style={{ backgroundImage: `url(${imageUrl})`, 
@@ -52,7 +55,7 @@ const Header = ( { auth, setAuth, history, curUser }) => {
         </Link>
       ) : null}
 
-      {auth === 'false' ? (
+      {!auth.auth ? (
         <div className={styles.signUpButton}>
           <Link style={{ textDecoration: 'none', color: 'rgba(82, 196, 26, 1)' }} to="/sign-up">
             Sign Up
