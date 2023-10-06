@@ -91,7 +91,7 @@ const CreateArticle = ({history, errorState, setErrorState }) => {
 
   return (
     <div className={styles.createArticle}>
-      <form className={styles.createArticle__form} onSubmit={handleSubmit(onSubmit)} >
+      <form className={styles.createArticle__form} onSubmit={(e) => { e.preventDefault(); handleSubmit(onSubmit);}} >
         <div className={styles.createArticle__title}>Create new article</div>
         <div className={styles.createArticle__label}>
           <div className={styles.createArticle__description}>Title</div>
@@ -151,7 +151,7 @@ const CreateArticle = ({history, errorState, setErrorState }) => {
           <button className={styles.addTagButton} onClick={(e) => addTag(e)}>Add tag</button>
         </div>
 
-        <button type="submit" className={styles.sendButton} onClick={(e) => { e.preventDefault() }}>Send</button>
+        <button type="submit" className={styles.sendButton}>Send</button>
         
       </form>
     </div>
