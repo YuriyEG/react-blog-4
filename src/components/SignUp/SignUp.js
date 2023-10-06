@@ -39,11 +39,20 @@ const SignUp = ({ history, setErrorState }) => {
       service.createUser(
         data,
         (res) => {
-          console.log(res)
+          console.log(res.user.token);
+          localStorage.setItem('token', res.user.token);
+          setErrorState({ status: true, message: 'Регистрация прошла успешно!' });
+          setTimeout(() => {
+            setErrorState({ status: false, message: '' });
+          }, 1500);
         },
 
         (err) => {
-            console.log(err);
+          console.log(err);
+          setErrorState({ status: true, message: 'При регистрации произошла ошибка!' });
+          setTimeout(() => {
+            setErrorState({ status: false, message: '' });
+          }, 1500);
         }
       );
       reset();
