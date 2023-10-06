@@ -87,7 +87,8 @@ const Article = ({itemId, history, auth, curUser }) => {
   }
 
   const addToFavorites = () => {
-    if (!likedFlag) {
+    if (auth === 'true') {
+          if (!likedFlag) {
       service.toFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
       setLikedFlag(true);
       setLikeCount(() => likeCount + 1)
@@ -97,6 +98,10 @@ const Article = ({itemId, history, auth, curUser }) => {
       setLikeCount(() => likeCount - 1)
     }
     console.log('article:', article);
+    } else {
+      history.push('/sign-in')
+    }
+
   }
 
   return (
