@@ -20,6 +20,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
   const [likedFlag, setLikedFlag] = useState(false);
   const [likeCount, setLikeCount] = useState(0);
   const [likedList, setLikedList] = useState([]);
+  const [curAuthor, setCurAuthor] = useState('');
 
   useEffect( () => {
       service.getArticle(itemId, (res) => setArticle(res.article), (err) => console.log(err));
@@ -33,6 +34,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
   useEffect( () => {
       setLikedFlag(article.favorited);
       setLikeCount(article.favoritesCount);
+      setCurAuthor(article.author.username);
   }, [article])
 
   useEffect( () => {
@@ -49,9 +51,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
     date = format(x, 'MMMMMM dd, yyyy');
   }
 
-  if (article.author) {
-    author = article.author.username;
-  }
+
 
   if (article.author) {
     imageUrl = article.author.image;
@@ -138,9 +138,6 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
   }
 
 
-  console.log('sfdsdfsdfsfsdfsf', article);
-
-  
   return (
     <div className={styles.article}>
       
@@ -169,7 +166,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
           </div>
           <div className={styles.article__cardIcon} style={{ backgroundImage: `url(${imageUrl})`, backgroundPosition: '50% 50%', backgroundSize: '105%', backgroundRepeat: 'no-repeat'}}></div>
         </div>
-        { (auth.auth) && (cur_user === author) ? (
+        { (auth.auth) && (cur_user === curAuthor) ? (
         <div className={styles.article__buttonWrapper}>
 
           <div className={styles.article__dialog} style={deleteOk ? {display: 'block' }: { display: 'none'}}> 
