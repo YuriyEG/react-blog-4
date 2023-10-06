@@ -65,7 +65,7 @@ const App = () => {
            ({ match, location, history }) => {
             console.log(match);
             const { id } = match.params;
-            return <Article itemId={id} auth={auth} curUser={curUser}/>
+            return <Article itemId={id} auth={auth} curUser={curUser} setErrorState={setErrorState} />
            }} exact />
         <Route path="/sign-up" component={SignUp} exact/>
         
