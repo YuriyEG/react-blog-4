@@ -42,9 +42,18 @@ const SignUp = ({ history }) => {
         (res) => {
           console.log(res.user.token);
           localStorage.setItem('token', res.user.token);
+          setErrorState({status: true, message: 'Регистрация прошла успешно!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 1500);
         } ,
 
-        (err) => console.log(err)
+        (err) => {
+          setErrorState({status: true, message: 'При регистрации произошла ошибка!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 1500);
+        }
       );
       reset();
       history.push('sign-in/');
