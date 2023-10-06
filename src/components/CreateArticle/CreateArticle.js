@@ -47,7 +47,7 @@ const CreateArticle = ({history, errorState, setErrorState }) => {
       service.createArticle(
         dataWithTags,
         (res) => {
-          if (res.article) {
+          if (res.title) {
           console.log(res);
           setErrorState({status: true, message: 'Статья успешно добавлена!'});
           setTimeout(() => {
