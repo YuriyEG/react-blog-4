@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 
 import format from 'date-fns/format';
 import { ar } from 'date-fns/locale';
+import Markdown from 'react-markdown';
+
 
 import styles from './article.module.css';
 import { withRouter } from 'react-router-dom';
@@ -138,8 +140,9 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
   }
 
 
-  console.log('sfdsdfsdfsfsdfsf', article);
-
+  
+  const markdown = '# Hi, *Pluto*!';
+  console.log(<Markdown>{markdown}</Markdown>)
   
   return (
     <div className={styles.article}>
@@ -188,12 +191,12 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
           <div className={styles.article__editButton} onClick={editHandler}>Edit</div>
         </div>
         ) : null }
-
+            
       </div>
       
       </div>
       <div className={styles.article__body}>
-        {article.body}
+        <Markdown>{article.body}</Markdown>
       </div>
       
     </div>
