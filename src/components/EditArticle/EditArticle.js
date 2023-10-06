@@ -12,7 +12,7 @@ import styles from './editArticle.module.css';
 
 const service = new ServiseAPI();
 
-const EditArticle = ({slug, history}) => {
+const EditArticle = ({slug, history, setErrorState }) => {
 
 
 
@@ -77,15 +77,28 @@ const EditArticle = ({slug, history}) => {
     
       let dataWithTags = { ...data, tagList: sendedTags };
 
+
+
       service.editArticle(
         slug,
         dataWithTags,
+        
         (res) => {
-          console.log(res);
-          
+  
+          setErrorState({status: true, message: 'Статья отредактирована!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 1500);
+
         } ,
 
-        (err) => console.log(err)
+        (err) => {
+          setErrorState({status: true, message: 'Ошибка при отправке!'});
+          setTimeout(() => {
+            setErrorState({status: false, message: '' })
+          }, 2000);
+        }
+
       );
       reset();
       setTags([]);

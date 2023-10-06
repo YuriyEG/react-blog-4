@@ -85,7 +85,7 @@ const App = () => {
 
           ({match, location, history }) => {
             const { slug } = match.params;
-            return <EditArticle slug={slug}
+            return <EditArticle slug={slug} setErrorState={setErrorState}
             
              />
           }
