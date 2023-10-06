@@ -1,9 +1,6 @@
-/* eslint-disable */
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { withRouter } from 'react-router-dom';
 
 import ServiceApi from '../../ServiceAPI/ServiceAPI';
 
@@ -11,10 +8,10 @@ import styles from './signIn.module.css';
 
 const service = new ServiceApi();
 
-const SignIn = ({ history, auth, setAuth, setErrorState}) => {
+const SignIn = ({ history, setAuth, setErrorState }) => {
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
     reset,
   } = useForm({
@@ -26,43 +23,36 @@ const SignIn = ({ history, auth, setAuth, setErrorState}) => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     service.login(
       data.email,
       data.password,
       (res) => {
-        console.log(res);
         if (res.user) {
-        localStorage.setItem('isAuth',JSON.stringify( { auth: true })); 
-        setAuth({ auth: true });
-        history.push(`/articles`);
-        setErrorState({status: true, message: 'Вход выполнен!'});
-        setTimeout(() => {
-          setErrorState({status: false, message: '' })
-        }, 2000);
-
-        } else {
-          console.log('Неудачно!');
-          setErrorState({status: true, message: 'Введены неверные данные!'});
+          localStorage.setItem('isAuth', JSON.stringify({ auth: true }));
+          setAuth({ auth: true });
+          history.push('/articles');
+          setErrorState({ status: true, message: 'Вход выполнен!' });
           setTimeout(() => {
-            setErrorState({status: false, message: '' })
+            setErrorState({ status: false, message: '' });
           }, 2000);
-
+        } else {
+          setErrorState({ status: true, message: 'Введены неверные данные!' });
+          setTimeout(() => {
+            setErrorState({ status: false, message: '' });
+          }, 2000);
         }
-
-
       },
 
       (err) => {
-        setErrorState({status: true, message: 'Запрос завершился неудачно'});
+        setErrorState({ status: true, message: 'Запрос завершился неудачно' });
         setTimeout(() => {
-          setErrorState({status: false, message: '' })
+          setErrorState({ status: false, message: '' });
         }, 2000);
+        return err;
       }
     );
     reset();
   };
-
 
   return (
     <div className={styles.signIn}>
@@ -78,6 +68,7 @@ const SignIn = ({ history, auth, setAuth, setErrorState}) => {
               required: 'Поле обязательно к заполнению',
               pattern: {
                 value:
+                  /* eslint-disable-next-line */
                   /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/,
                 message: 'Please enter valid email!',
               },
@@ -110,7 +101,7 @@ const SignIn = ({ history, auth, setAuth, setErrorState}) => {
           <span className={styles.signIn__warning}>{errors?.password && <p>{errors?.password?.message}</p>}</span>
         </div>
 
-        <input type="submit" className={styles.signIn__submit} name="submit_btn" value="Login"/>
+        <input type="submit" className={styles.signIn__submit} name="submit_btn" value="Login" />
         <div className={styles.signIn__question}>
           Don&#8217;t have an account?{' '}
           <Link to="/sign-up" className={styles.signIn__questionBlue}>

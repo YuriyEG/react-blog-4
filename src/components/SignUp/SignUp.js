@@ -1,6 +1,4 @@
-/* eslint-disable */
-
-import React, { useEffect, useState, setErrorState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, withRouter } from 'react-router-dom';
 
@@ -30,16 +28,11 @@ const SignUp = ({ history, setErrorState }) => {
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
 
-  const loadPassword = (e) => {
-    setPassword(e.target.value);
-  };
-
   const onSubmit = (data) => {
     if (password === password2) {
       service.createUser(
         data,
         (res) => {
-          console.log(res.user.token);
           localStorage.setItem('token', res.user.token);
           setErrorState({ status: true, message: 'Регистрация прошла успешно!' });
           setTimeout(() => {
@@ -48,11 +41,11 @@ const SignUp = ({ history, setErrorState }) => {
         },
 
         (err) => {
-          console.log(err);
           setErrorState({ status: true, message: 'При регистрации произошла ошибка!' });
           setTimeout(() => {
             setErrorState({ status: false, message: '' });
           }, 1500);
+          return err;
         }
       );
       reset();
@@ -92,6 +85,7 @@ const SignUp = ({ history, setErrorState }) => {
               required: 'Поле обязательно к заполнению',
               pattern: {
                 value:
+                  /* eslint-disable-next-line */
                   /^((([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})|([0-9А-Яа-я]{1}[-0-9А-я\.]{1,}[0-9А-Яа-я]{1}))@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$/,
                 message: 'Please enter valid email!',
               },
@@ -121,7 +115,6 @@ const SignUp = ({ history, setErrorState }) => {
               },
             })}
             onChange={(e) => {
-              console.log(e.target.value);
               setPassword(e.target.value);
             }}
           />
