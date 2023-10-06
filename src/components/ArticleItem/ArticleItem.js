@@ -12,12 +12,14 @@ const ArticleItem = ({ article, onItemSelected }) => {
 
   const [likedFlag, setLikedFlag] = useState(false);
 
-  async function liked() {
+  async function getLikedStatus() {
      let liked = await JSON.parse(localStorage.getItem('liked_list'));
      const slug  =  await article.slug;
-     iAmLiked =  await liked.includes(String(slug));
+     let iAmLiked =  await liked.includes(String(slug));
      setLikedFlag(iAmLiked);
   }
+
+  getLikedStatus();
  
   
   
