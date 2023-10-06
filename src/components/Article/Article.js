@@ -11,7 +11,7 @@ import ServiceApi from '../../ServiceAPI/ServiceAPI';
 import Alert from '../Alert';
 const service = new ServiceApi();
 
-const Article = ({itemId, history, auth, curUser }) => {
+const Article = ({itemId, history, auth, curUser, setErrorState }) => {
 
 
   const [article, setArticle] = useState({});
@@ -99,6 +99,10 @@ const Article = ({itemId, history, auth, curUser }) => {
       let curList = JSON.parse(localStorage.getItem('liked_list'));
       curList.push(itemId);
       localStorage.setItem('liked_list', JSON.stringify(curList));
+      setErrorState({status: true, message: 'Добавлено в избранное!'});
+      setTimeout(() => {
+        setErrorState({status: false, message: '' })
+      }, 1500);
     } else {
       service.unFavorites(itemId, (res) => console.log('result',res), (err) => console.log('error:', err));
       setLikedFlag(false);
@@ -106,9 +110,17 @@ const Article = ({itemId, history, auth, curUser }) => {
       let curList = JSON.parse(localStorage.getItem('liked_list'));
       let newList = [...curList].filter( node => node !== itemId);
       localStorage.setItem('liked_list', JSON.stringify(newList));
+      setErrorState({status: true, message: 'Удалено из избранного!'});
+      setTimeout(() => {
+        setErrorState({status: false, message: '' })
+      }, 1500);
     
     }
     } else {
+      setErrorState({status: true, message: 'Вам необходимо авторизоваться!'});
+      setTimeout(() => {
+        setErrorState({status: false, message: '' })
+      }, 1500);
       history.push('/sign-in')
     }
 
