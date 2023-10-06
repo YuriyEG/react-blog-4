@@ -3,15 +3,24 @@
 import React from 'react';
 
 import format from 'date-fns/format';
+import { useState } from 'react';
 import { ar } from 'date-fns/locale';
 
 import styles from './articleItem.module.css';
 
 const ArticleItem = ({ article, onItemSelected }) => {
 
-  let liked = JSON.parse(localStorage.getItem('liked_list'));
-  let slug = article.slug;
-  const iAmLiked = liked.includes(String(slug))
+  const [likedFlag, setLikedFlag] = useState(false);
+
+  async function liked() {
+     let liked = await JSON.parse(localStorage.getItem('liked_list'));
+     const slug  =  await article.slug;
+     iAmLiked =  await liked.includes(String(slug));
+     setLikedFlag(iAmLiked);
+  }
+ 
+  
+  
 
   let imageUrl;
   let author = 'no author';
@@ -39,7 +48,7 @@ const ArticleItem = ({ article, onItemSelected }) => {
         <div className={styles.articleItem__title}>
           <span className={styles.articleItem__titleBox}>{article.title}</span>
 
-          <div className={iAmLiked ?  styles.articleItem__liked :  styles.articleItem__like}></div>
+          <div className={likedFlag ?  styles.articleItem__liked :  styles.articleItem__like}></div>
           <div className={styles.articleItem__count}>{article.favoritesCount}</div>
         </div>
         <div className={styles.articleItem__tags}>
