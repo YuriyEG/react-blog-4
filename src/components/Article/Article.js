@@ -92,6 +92,7 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
     });
 
     setDeleteOk(false);
+    history.push('/articles');
     
   }
 
