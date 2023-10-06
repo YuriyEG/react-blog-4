@@ -77,11 +77,20 @@ const Article = ({itemId, history, auth, curUser, setErrorState }) => {
 
   const confirmationHandler = () => {
     service.deleteArticle(itemId, (res) => {
+      setErrorState({status: true, message: 'Статья удалена!'});
+      setTimeout(() => {
+        setErrorState({status: false, message: '' })
+      }, 1500);
+      setTimeout(() => {
+        history.push('/articles');
+      }, 400);
+    } , (err) => {
+      setErrorState({status: true, message: 'Ошибка при удалени!'});
+      setTimeout(() => {
+        setErrorState({status: false, message: '' })
+      }, 1500);
+    });
 
-    } , (err) => console.log('error:', err));
-    setTimeout(() => {
-      history.push('/articles');
-    }, 400);
     setDeleteOk(false);
     
   }
